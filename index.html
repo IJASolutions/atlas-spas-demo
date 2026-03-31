@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Atlas Spas | Professional Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&amp;family=Figtree:wght@400;500;600&amp;family=Inter:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#39485c",
+              "surface-container-high": "#e7e8e9",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary-fixed-variant": "#004f54",
+              "surface": "#f8f9fa",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "primary-container": "#008189",
+              "outline-variant": "#bcc9ca",
+              "on-primary-fixed": "#002022",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#134d5b",
+              "primary": "#00666c",
+              "tertiary-fixed": "#d4e3fd",
+              "inverse-on-surface": "#f0f1f2",
+              "on-background": "#191c1d",
+              "tertiary-container": "#67758c",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "secondary-container": "#b6ebfc",
+              "surface-dim": "#d9dadb",
+              "on-secondary-fixed": "#001f27",
+              "surface-container": "#edeeef",
+              "on-tertiary-fixed": "#0d1c2f",
+              "inverse-primary": "#69d6df",
+              "outline": "#6d797a",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#376b7a",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#69d6df",
+              "inverse-surface": "#2e3132",
+              "on-tertiary-container": "#fdfcff",
+              "tertiary": "#4e5d72",
+              "surface-variant": "#e1e3e4",
+              "primary-fixed": "#87f3fb",
+              "background": "#f8f9fa",
+              "secondary": "#306574",
+              "on-surface": "#191c1d",
+              "surface-tint": "#00696f",
+              "tertiary-fixed-dim": "#b8c7e0",
+              "on-tertiary": "#ffffff",
+              "on-primary-container": "#f4feff",
+              "surface-container-low": "#f3f4f5",
+              "secondary-fixed": "#b6ebfc",
+              "secondary-fixed-dim": "#9bcfdf",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#3d494a"
+            },
+            fontFamily: {
+              "headline": ["Frank Ruhl Libre", "serif"],
+              "body": ["Figtree", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #010f21;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-on-surface flex flex-col min-h-screen">
+<main class="flex-grow flex flex-col items-center justify-center px-8 py-12 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-96 h-96 bg-secondary rounded-full blur-[120px]"></div>
+</div>
+<div class="w-full max-w-sm z-10 space-y-12">
+<div class="flex flex-col items-center space-y-4">
+<div class="relative flex items-center justify-center w-24 h-24 bg-gradient-to-br from-primary-container to-primary rounded-xl shadow-2xl">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="absolute font-headline text-white text-4xl font-bold">A</span>
+</div>
+<div class="text-center">
+<h1 class="font-headline text-3xl text-white tracking-tight">Atlas Spas</h1>
+<p class="text-secondary-fixed-dim/70 font-label text-xs uppercase tracking-[0.2em] mt-1">Established Trust</p>
+</div>
+</div>
+<form class="space-y-6">
+<div class="space-y-5">
+<div class="group relative">
+<label class="block text-secondary-fixed-dim font-label text-xs font-medium mb-1 ml-1 transition-colors group-focus-within:text-primary-fixed" for="email">Email Address</label>
+<input class="w-full bg-white/5 border-b-2 border-outline-variant/30 text-white px-4 py-3 rounded-t-lg focus:outline-none focus:ring-0 focus:border-primary-container transition-all duration-300 placeholder:text-white/20" id="email" name="email" placeholder="sales@atlas.com" type="email"/>
+</div>
+<div class="group relative">
+<label class="block text-secondary-fixed-dim font-label text-xs font-medium mb-1 ml-1 transition-colors group-focus-within:text-primary-fixed" for="password">Password</label>
+<input class="w-full bg-white/5 border-b-2 border-outline-variant/30 text-white px-4 py-3 rounded-t-lg focus:outline-none focus:ring-0 focus:border-primary-container transition-all duration-300 placeholder:text-white/20" id="password" name="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<label class="flex items-center space-x-2 cursor-pointer">
+<input class="w-4 h-4 rounded-sm bg-white/10 border-outline-variant/30 text-primary focus:ring-primary focus:ring-offset-[#010f21]" type="checkbox"/>
+<span class="text-white/60 text-sm">Remember me</span>
+</label>
+<a class="text-primary-fixed-dim text-sm hover:underline font-medium" href="#">Forgot?</a>
+</div>
+<a href="dashboard.html" class="block w-full bg-primary-container hover:bg-primary text-white font-semibold py-4 rounded-lg shadow-lg shadow-primary/20 transform active:scale-[0.98] transition-all duration-200 text-center" style="text-decoration:none">
+                    Sign In
+                </a>
+</form>
+<div class="flex flex-col items-center space-y-6 pt-4">
+<div class="flex items-center w-full space-x-4">
+<div class="flex-grow h-[1px] bg-white/10"></div>
+<span class="text-white/30 text-xs font-label uppercase tracking-widest">Secure Access</span>
+<div class="flex-grow h-[1px] bg-white/10"></div>
+</div>
+<div class="flex flex-col items-center space-y-3 cursor-pointer group">
+<div class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-white/50 text-3xl group-hover:text-primary-fixed-dim transition-colors" data-icon="faceid">face</span>
+</div>
+<span class="text-white/40 text-xs font-label">Quick Sign-in</span>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full py-8 px-8 flex justify-center opacity-30">
+<p class="text-[10px] text-white font-label tracking-widest uppercase">© 2024 Atlas Spas &amp; Swim Spas International</p>
+</footer>
+<div class="fixed inset-0 pointer-events-none">
+<img alt="" class="hidden" data-alt="Abstract smooth surface of dark water with elegant teal ripples and cinematic lighting reflecting deep navy tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7pcWWy3Aj-j_dm5o1f4RNeb2M7oVuDeqewvJXkEepsv9lpqnbBsjGjVpAExdcKm5xsXUJE8w3VQ4egS2rMNwcK-2DkdND79YP2BhIpq60emsHTAEEMLpIDHVj-mRNNI-5Lh7EghDUFo80DkxKEP2s_Ez5GdrjnHlHvotqVZdLxfxLQBl0Y0jOurf9huLzqcG1_YX12wkU3iFtSXkYfpVPsVY7DUQiaaq_dXBf2SJJe19LEEjoHmGIoNeM2Y_H2OuizNLDh4p_Qs8_"/>
+</div>
+</body></html>

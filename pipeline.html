@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Lead Pipeline - Atlas Spas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;800&family=Figtree:wght@400;500;600;700&family=Roboto:wght@400;500&family=Newsreader:opsz,wght@6..72,400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+        font-family: 'Figtree', sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    .serif-display {
+        font-family: 'Frank Ruhl Libre', serif;
+    }
+    .technical-data {
+        font-family: 'Roboto', sans-serif;
+    }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-tertiary-fixed-variant": "#39485c",
+          "surface-container-high": "#e7e8e9",
+          "surface-container-highest": "#e1e3e4",
+          "on-primary-fixed-variant": "#004f54",
+          "surface": "#f8f9fa",
+          "error-container": "#ffdad6",
+          "error": "#ba1a1a",
+          "primary-container": "#008189",
+          "outline-variant": "#bcc9ca",
+          "on-primary-fixed": "#002022",
+          "on-primary": "#ffffff",
+          "on-secondary-fixed-variant": "#134d5b",
+          "primary": "#00666c",
+          "tertiary-fixed": "#d4e3fd",
+          "inverse-on-surface": "#f0f1f2",
+          "on-background": "#191c1d",
+          "tertiary-container": "#67758c",
+          "surface-container-lowest": "#ffffff",
+          "surface-bright": "#f8f9fa",
+          "secondary-container": "#b6ebfc",
+          "surface-dim": "#d9dadb",
+          "on-secondary-fixed": "#001f27",
+          "surface-container": "#edeeef",
+          "on-tertiary-fixed": "#0d1c2f",
+          "inverse-primary": "#69d6df",
+          "outline": "#6d797a",
+          "on-error-container": "#93000a",
+          "on-secondary-container": "#376b7a",
+          "on-error": "#ffffff",
+          "primary-fixed-dim": "#69d6df",
+          "inverse-surface": "#2e3132",
+          "on-tertiary-container": "#fdfcff",
+          "tertiary": "#4e5d72",
+          "surface-variant": "#e1e3e4",
+          "primary-fixed": "#87f3fb",
+          "background": "#f8f9fa",
+          "secondary": "#306574",
+          "on-surface": "#191c1d",
+          "surface-tint": "#00696f",
+          "tertiary-fixed-dim": "#b8c7e0",
+          "on-tertiary": "#ffffff",
+          "on-primary-container": "#f4feff",
+          "surface-container-low": "#f3f4f5",
+          "secondary-fixed": "#b6ebfc",
+          "secondary-fixed-dim": "#9bcfdf",
+          "on-secondary": "#ffffff",
+          "on-surface-variant": "#3d494a"
+        },
+        fontFamily: {
+          "headline": ["Frank Ruhl Libre", "serif"],
+          "body": ["Figtree", "sans-serif"],
+          "label": ["Inter", "sans-serif"],
+          "data": ["Roboto", "sans-serif"]
+        },
+        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+      },
+    },
+  }
+</script>
+<style>
+body { min-height: max(884px, 100dvh); }
+</style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#010f21] dark:bg-[#010f21] shadow-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00929C] transition-all duration-200 active:scale-95" data-icon="sync">sync</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-white/70 text-xs font-medium tracking-widest uppercase">Online</span>
+</div>
+</div>
+<h1 class="font-['Frank_Ruhl_Libre'] font-bold tracking-tight text-xl text-white">Atlas Spas</h1>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" data-icon="person">person</span>
+</div>
+</header>
+<div class="bg-[#306574] h-[2px] w-full fixed top-16 z-50"></div>
+
+<main class="pt-24 px-4">
+<!-- Header -->
+<section class="mb-6">
+<h2 class="serif-display text-3xl text-[#010f21] leading-tight">Lead Pipeline</h2>
+<p class="text-outline text-sm mt-1">Dallas Home & Garden Show</p>
+</section>
+
+<!-- Pipeline Stats -->
+<section class="mb-8 -mx-4">
+<div class="flex overflow-x-auto px-4 gap-3 hide-scrollbar" id="pipeline-stats">
+</div>
+</section>
+
+<!-- Stage Filter Chips -->
+<section class="mb-6">
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2" id="stage-chips">
+<button class="whitespace-nowrap px-4 py-2 bg-primary-container text-white rounded-full font-medium text-xs transition-all active:scale-95" data-stage="all" onclick="filterStage('all', this)">All</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-xs transition-all active:scale-95" data-stage="new" onclick="filterStage('new', this)">New</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-xs transition-all active:scale-95" data-stage="showed" onclick="filterStage('showed', this)">Showed</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-xs transition-all active:scale-95" data-stage="quoted" onclick="filterStage('quoted', this)">Quoted</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-xs transition-all active:scale-95" data-stage="negotiating" onclick="filterStage('negotiating', this)">Negotiating</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-xs transition-all active:scale-95" data-stage="closed_won" onclick="filterStage('closed_won', this)">Won</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-xs transition-all active:scale-95" data-stage="closed_lost" onclick="filterStage('closed_lost', this)">Lost</button>
+</div>
+</section>
+
+<!-- Leads List -->
+<section id="leads-list" class="space-y-3 mb-12">
+<div class="text-center py-12 text-outline">Loading pipeline...</div>
+</section>
+</main>
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-[#010f21] dark:bg-[#010f21] border-t border-[#306574]/30 shadow-[0_-4px_20px_rgba(1,15,33,0.3)]">
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="walk-in.html">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="catalog.html">
+<span class="material-symbols-outlined" data-icon="pool">pool</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#00929C]/10 text-[#00929C] rounded-xl px-3 py-1 active:scale-90 transition-transform duration-150" href="pipeline.html">
+<span class="material-symbols-outlined" data-icon="view_kanban" style="font-variation-settings: 'FILL' 1;">view_kanban</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Pipeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">More</span>
+</a>
+</nav>
+
+<script>
+let allLeads = [];
+let currentFilter = 'all';
+
+const STATUS_CONFIG = {
+  'new':            { label: 'New',         color: 'bg-blue-100 text-blue-700',    icon: 'fiber_new' },
+  'appointment_set':{ label: 'Appt Set',    color: 'bg-purple-100 text-purple-700',icon: 'calendar_today' },
+  'showed':         { label: 'Showed',      color: 'bg-cyan-100 text-cyan-700',    icon: 'how_to_reg' },
+  'quoted':         { label: 'Quoted',      color: 'bg-amber-100 text-amber-700',  icon: 'description' },
+  'negotiating':    { label: 'Negotiating', color: 'bg-orange-100 text-orange-700',icon: 'handshake' },
+  'closed_won':     { label: 'Won',         color: 'bg-emerald-100 text-emerald-700', icon: 'check_circle' },
+  'closed_lost':    { label: 'Lost',        color: 'bg-red-100 text-red-700',      icon: 'cancel' },
+  'follow_up':      { label: 'Follow Up',   color: 'bg-yellow-100 text-yellow-700',icon: 'phone_callback' },
+};
+
+function fmt(n) {
+  return '$' + Number(n).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+}
+
+async function loadPipeline() {
+  try {
+    const res = await fetch('/api/leads');
+    allLeads = await res.json();
+    renderStats();
+    renderLeads();
+  } catch(e) {
+    document.getElementById('leads-list').innerHTML = '<div class="text-center py-12 text-error">Failed to load pipeline</div>';
+  }
+}
+
+function renderStats() {
+  const counts = {};
+  allLeads.forEach(l => { counts[l.status] = (counts[l.status] || 0) + 1; });
+  const statsEl = document.getElementById('pipeline-stats');
+  const stages = ['new', 'showed', 'quoted', 'negotiating', 'closed_won'];
+  statsEl.innerHTML = stages.map(s => {
+    const cfg = STATUS_CONFIG[s] || { label: s, color: 'bg-gray-100 text-gray-700' };
+    return `<div class="flex-shrink-0 w-28 p-3 bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(1,15,33,0.04)]">
+      <p class="text-outline text-[9px] font-bold uppercase tracking-tighter mb-1">${cfg.label}</p>
+      <p class="serif-display text-xl text-on-surface">${counts[s] || 0}</p>
+    </div>`;
+  }).join('');
+}
+
+function renderLeads() {
+  const container = document.getElementById('leads-list');
+  const filtered = currentFilter === 'all' ? allLeads : allLeads.filter(l => l.status === currentFilter);
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="text-center py-12 text-outline">No leads in this stage</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(lead => {
+    const cfg = STATUS_CONFIG[lead.status] || { label: lead.status, color: 'bg-gray-100 text-gray-700', icon: 'person' };
+    const timeAgo = getTimeAgo(lead.updated_at);
+    return `<div class="bg-surface-container-lowest p-4 rounded-xl shadow-[0_4px_12px_rgba(1,15,33,0.04)] flex items-center gap-4">
+      <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+        <span class="material-symbols-outlined text-primary text-lg">${cfg.icon}</span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between mb-1">
+          <h4 class="font-bold text-[#010f21] text-sm truncate">${lead.first_name} ${lead.last_name}</h4>
+          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${cfg.color}">${cfg.label}</span>
+        </div>
+        <p class="text-on-surface-variant text-xs truncate">${lead.product_interest || 'No product specified'}</p>
+        <div class="flex items-center gap-3 mt-1">
+          <span class="text-outline text-[10px]">${lead.source}</span>
+          <span class="text-outline text-[10px]">Rep: ${lead.assigned_rep || 'Unassigned'}</span>
+          <span class="text-outline text-[10px]">${timeAgo}</span>
+        </div>
+        ${lead.notes ? `<p class="text-on-surface-variant text-[11px] mt-2 italic truncate">"${lead.notes}"</p>` : ''}
+      </div>
+      <button class="self-center flex-shrink-0" onclick="showLeadActions(${lead.id})">
+        <span class="material-symbols-outlined text-outline">more_vert</span>
+      </button>
+    </div>`;
+  }).join('');
+}
+
+function filterStage(stage, btn) {
+  currentFilter = stage;
+  document.querySelectorAll('#stage-chips button').forEach(b => {
+    b.className = b.className.replace('bg-primary-container text-white', 'bg-surface-container-highest text-on-surface-variant');
+  });
+  btn.className = btn.className.replace('bg-surface-container-highest text-on-surface-variant', 'bg-primary-container text-white');
+  renderLeads();
+}
+
+function getTimeAgo(dateStr) {
+  if (!dateStr) return '';
+  const now = new Date();
+  const then = new Date(dateStr);
+  const mins = Math.floor((now - then) / 60000);
+  if (mins < 60) return mins + 'm ago';
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return hrs + 'h ago';
+  return Math.floor(hrs / 24) + 'd ago';
+}
+
+function showLeadActions(leadId) {
+  const lead = allLeads.find(l => l.id === leadId);
+  if (!lead) return;
+  const action = prompt(`Update "${lead.first_name} ${lead.last_name}" status to:\nnew, showed, quoted, negotiating, closed_won, closed_lost, follow_up`);
+  if (action && STATUS_CONFIG[action]) {
+    fetch(`/api/leads/${leadId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: action })
+    }).then(() => loadPipeline());
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadPipeline);
+// Auto-refresh every 10 seconds
+setInterval(loadPipeline, 10000);
+</script>
+
+</body></html>

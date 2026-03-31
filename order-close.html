@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;800&family=Figtree:wght@400;500;600;700&family=Roboto:wght@400;500&family=Newsreader:opsz,wght@6..72,400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+        font-family: 'Figtree', sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    .serif-display {
+        font-family: 'Frank Ruhl Libre', serif;
+    }
+    .technical-data {
+        font-family: 'Roboto', sans-serif;
+    }
+    .glass-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    canvas {
+        touch-action: none;
+    }
+</style>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-tertiary-fixed-variant": "#39485c",
+          "surface-container-high": "#e7e8e9",
+          "surface-container-highest": "#e1e3e4",
+          "on-primary-fixed-variant": "#004f54",
+          "surface": "#f8f9fa",
+          "error-container": "#ffdad6",
+          "error": "#ba1a1a",
+          "primary-container": "#008189",
+          "outline-variant": "#bcc9ca",
+          "on-primary-fixed": "#002022",
+          "on-primary": "#ffffff",
+          "on-secondary-fixed-variant": "#134d5b",
+          "primary": "#00666c",
+          "tertiary-fixed": "#d4e3fd",
+          "inverse-on-surface": "#f0f1f2",
+          "on-background": "#191c1d",
+          "tertiary-container": "#67758c",
+          "surface-container-lowest": "#ffffff",
+          "surface-bright": "#f8f9fa",
+          "secondary-container": "#b6ebfc",
+          "surface-dim": "#d9dadb",
+          "on-secondary-fixed": "#001f27",
+          "surface-container": "#edeeef",
+          "on-tertiary-fixed": "#0d1c2f",
+          "inverse-primary": "#69d6df",
+          "outline": "#6d797a",
+          "on-error-container": "#93000a",
+          "on-secondary-container": "#376b7a",
+          "on-error": "#ffffff",
+          "primary-fixed-dim": "#69d6df",
+          "inverse-surface": "#2e3132",
+          "on-tertiary-container": "#fdfcff",
+          "tertiary": "#4e5d72",
+          "surface-variant": "#e1e3e4",
+          "primary-fixed": "#87f3fb",
+          "background": "#f8f9fa",
+          "secondary": "#306574",
+          "on-surface": "#191c1d",
+          "surface-tint": "#00696f",
+          "tertiary-fixed-dim": "#b8c7e0",
+          "on-tertiary": "#ffffff",
+          "on-primary-container": "#f4feff",
+          "surface-container-low": "#f3f4f5",
+          "secondary-fixed": "#b6ebfc",
+          "secondary-fixed-dim": "#9bcfdf",
+          "on-secondary": "#ffffff",
+          "on-surface-variant": "#3d494a"
+        },
+        fontFamily: {
+          "headline": ["Newsreader"],
+          "body": ["Manrope"],
+          "label": ["Inter"]
+        },
+        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+      },
+    },
+  }
+</script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-40">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#010f21] shadow-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00929C] transition-all duration-200 active:scale-95">sync</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-white/70 text-xs font-medium tracking-widest uppercase">Online</span>
+</div>
+</div>
+<h1 class="font-['Frank_Ruhl_Libre'] font-bold tracking-tight text-xl text-white">Atlas Spas</h1>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm">person</span>
+</div>
+</header>
+<div class="bg-[#306574] h-[2px] w-full fixed top-16 z-50"></div>
+
+<main class="pt-24 px-6">
+
+<!-- Close Sale Title with Back Arrow -->
+<section class="mb-6">
+<div class="flex items-center gap-3">
+<a href="quote-builder.html" class="flex items-center justify-center w-11 h-11 rounded-xl bg-surface-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[#010f21]">arrow_back</span>
+</a>
+<h2 class="serif-display text-3xl text-[#010f21] leading-tight">Close Sale</h2>
+</div>
+</section>
+
+<!-- Contract Summary Card -->
+<section class="mb-6">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-xl">description</span>
+<h3 class="font-bold text-[#010f21] text-lg">Contract Summary</h3>
+</div>
+
+<!-- Customer Info -->
+<div class="mb-4">
+<p class="text-outline text-[10px] font-bold uppercase tracking-wider mb-1">Customer</p>
+<p class="font-semibold text-[#010f21] text-base">Sarah Jenkins</p>
+<div class="flex items-center gap-4 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-outline text-sm">phone</span>
+<span class="technical-data text-on-surface-variant text-sm">(214) 555-0187</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-outline text-sm">mail</span>
+<span class="technical-data text-on-surface-variant text-sm">sarah.j@email.com</span>
+</div>
+</div>
+</div>
+
+<!-- Product -->
+<div class="mb-4">
+<p class="text-outline text-[10px] font-bold uppercase tracking-wider mb-1">Product</p>
+<p class="font-semibold text-[#010f21] text-base">Signature L-800 Spa</p>
+</div>
+
+<!-- Options (expandable) -->
+<div class="mb-4">
+<button id="optionsToggle" class="flex items-center gap-2 w-full" onclick="toggleOptions()">
+<p class="text-outline text-[10px] font-bold uppercase tracking-wider">Options (3)</p>
+<span id="optionsChevron" class="material-symbols-outlined text-outline text-sm transition-transform duration-200">expand_more</span>
+</button>
+<div id="optionsList" class="hidden mt-2 space-y-1 pl-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-on-surface-variant text-sm">Jets Package</span>
+<span class="technical-data text-on-surface-variant text-sm ml-auto">+$1,129</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-on-surface-variant text-sm">LED Lights</span>
+<span class="technical-data text-on-surface-variant text-sm ml-auto">+$699</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-on-surface-variant text-sm">Smart Top Cover</span>
+<span class="technical-data text-on-surface-variant text-sm ml-auto">+$501</span>
+</div>
+</div>
+</div>
+
+<!-- Price Breakdown -->
+<div class="bg-surface-container-low rounded-xl p-4 space-y-2">
+<div class="flex justify-between">
+<span class="text-on-surface-variant text-sm">Subtotal</span>
+<span class="technical-data text-[#010f21] text-sm font-medium">$11,495.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant text-sm">Options</span>
+<span class="technical-data text-[#010f21] text-sm font-medium">+$2,329.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant text-sm">Discounts</span>
+<span class="technical-data text-emerald-600 text-sm font-medium">-$500.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant text-sm">Tax</span>
+<span class="technical-data text-[#010f21] text-sm font-medium">+$1,099.23</span>
+</div>
+<div class="border-t border-outline-variant pt-2 mt-2 flex justify-between items-baseline">
+<span class="font-bold text-[#010f21] text-base">Total</span>
+<span class="serif-display text-2xl text-[#010f21] font-bold">$14,423.23</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Order Details Section -->
+<section class="mb-6">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-xl">inventory_2</span>
+<h3 class="font-bold text-[#010f21] text-lg">Order Details</h3>
+</div>
+
+<!-- Model Type Dropdown -->
+<div class="mb-4">
+<label class="text-outline text-[10px] font-bold uppercase tracking-wider block mb-1.5">Model Type</label>
+<div class="relative">
+<select id="modelType" class="w-full bg-surface-container-low text-[#010f21] text-sm font-medium rounded-xl px-4 h-12 appearance-none border-0 focus:ring-2 focus:ring-primary">
+<option value="factory">Factory Build</option>
+<option value="instock" selected>In-Stock</option>
+<option value="floor">Floor Model</option>
+<option value="blemish">Blemish</option>
+</select>
+<span class="material-symbols-outlined text-outline absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-lg">expand_more</span>
+</div>
+</div>
+
+<!-- Serial Number -->
+<div class="mb-4">
+<label class="text-outline text-[10px] font-bold uppercase tracking-wider block mb-1.5">Serial Number <span class="text-outline/60 normal-case">(optional)</span></label>
+<input type="text" id="serialNumber" value="ATL-L800-2026-04182" placeholder="Enter serial number" class="w-full bg-surface-container-low text-[#010f21] text-sm font-medium rounded-xl px-4 h-12 border-0 focus:ring-2 focus:ring-primary placeholder:text-outline/40"/>
+</div>
+
+<!-- Location Dropdown -->
+<div class="mb-4">
+<label class="text-outline text-[10px] font-bold uppercase tracking-wider block mb-1.5">Location</label>
+<div class="relative">
+<select id="location" class="w-full bg-surface-container-low text-[#010f21] text-sm font-medium rounded-xl px-4 h-12 appearance-none border-0 focus:ring-2 focus:ring-primary">
+<option value="dallas" selected>Dallas Main</option>
+<option value="houston">Houston</option>
+<option value="sanantonio">San Antonio</option>
+<option value="austin">Austin</option>
+<option value="corpuschristi">Corpus Christi</option>
+<option value="fortworth">Fort Worth</option>
+<option value="midland">Midland</option>
+<option value="odessa">Odessa</option>
+<option value="amarillo">Amarillo</option>
+</select>
+<span class="material-symbols-outlined text-outline absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-lg">expand_more</span>
+</div>
+</div>
+
+<!-- Notes -->
+<div>
+<label class="text-outline text-[10px] font-bold uppercase tracking-wider block mb-1.5">Notes</label>
+<textarea id="orderNotes" rows="3" placeholder="Additional notes..." class="w-full bg-surface-container-low text-[#010f21] text-sm rounded-xl px-4 py-3 border-0 focus:ring-2 focus:ring-primary placeholder:text-outline/40 resize-none">Customer prefers delivery after April 15. Electrical prep needed — 50A circuit.</textarea>
+</div>
+</div>
+</section>
+
+<!-- Deposit Section -->
+<section class="mb-6">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)] border-l-4 border-primary">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+<h3 class="font-bold text-[#010f21] text-lg">Deposit</h3>
+</div>
+
+<!-- Deposit Amount -->
+<div class="mb-4">
+<label class="text-outline text-[10px] font-bold uppercase tracking-wider block mb-1.5">Deposit Amount</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 serif-display text-[#010f21] text-xl font-bold">$</span>
+<input type="text" id="depositAmount" value="4,326.97" class="w-full bg-surface-container-low text-[#010f21] serif-display text-xl font-bold rounded-xl pl-10 pr-4 h-14 border-0 focus:ring-2 focus:ring-primary" oninput="recalculateBalance()"/>
+</div>
+<p class="text-outline text-xs mt-1.5">Minimum 30% = $4,326.97</p>
+</div>
+
+<!-- Payment Method Chips -->
+<div class="mb-4">
+<label class="text-outline text-[10px] font-bold uppercase tracking-wider block mb-2">Payment Method</label>
+<div class="flex flex-wrap gap-2" id="paymentChips">
+<button class="payment-chip px-4 h-11 rounded-xl text-sm font-semibold border-2 border-outline-variant text-on-surface-variant transition-all active:scale-95" data-method="cash" onclick="selectPayment(this)">Cash</button>
+<button class="payment-chip px-4 h-11 rounded-xl text-sm font-semibold border-2 border-outline-variant text-on-surface-variant transition-all active:scale-95" data-method="check" onclick="selectPayment(this)">Check</button>
+<button class="payment-chip px-4 h-11 rounded-xl text-sm font-semibold border-2 border-primary-container bg-primary-container text-white transition-all active:scale-95" data-method="credit" onclick="selectPayment(this)">Credit Card</button>
+<button class="payment-chip px-4 h-11 rounded-xl text-sm font-semibold border-2 border-outline-variant text-on-surface-variant transition-all active:scale-95" data-method="ach" onclick="selectPayment(this)">ACH</button>
+<button class="payment-chip px-4 h-11 rounded-xl text-sm font-semibold border-2 border-outline-variant text-on-surface-variant transition-all active:scale-95" data-method="finance" onclick="selectPayment(this)">Finance</button>
+</div>
+</div>
+
+<!-- Card Reader Status (shown when Credit Card selected) -->
+<div id="cardReaderStatus" class="flex items-center gap-2 mb-4 bg-surface-container-low rounded-xl px-4 py-3">
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-[#010f21] text-sm font-medium">Card reader ready</span>
+<span class="text-outline text-xs ml-auto">Intuit Payments</span>
+</div>
+
+<!-- Balance Due -->
+<div class="bg-surface-container-low rounded-xl p-4 flex justify-between items-baseline">
+<span class="text-on-surface-variant text-sm font-medium">Balance Due</span>
+<span id="balanceDue" class="serif-display text-2xl text-slate-700 font-bold">$10,096.26</span>
+</div>
+</div>
+</section>
+
+<!-- Customer Signature Section -->
+<section class="mb-6">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">draw</span>
+<h3 class="font-bold text-[#010f21] text-lg">Customer Signature</h3>
+</div>
+<button class="text-primary text-sm font-semibold active:scale-95 transition-transform" onclick="clearCanvas('customerCanvas')">Clear</button>
+</div>
+<canvas id="customerCanvas" class="w-full bg-white rounded-xl" style="height: 200px; border: 2px solid #e1e3e4;" width="800" height="400"></canvas>
+
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 mt-4">
+<input type="checkbox" id="termsCheckbox" checked class="mt-0.5 w-5 h-5 rounded-lg text-primary-container border-outline-variant focus:ring-primary cursor-pointer"/>
+<label for="termsCheckbox" class="text-on-surface-variant text-sm leading-snug cursor-pointer">I agree to the terms and conditions of this purchase</label>
+</div>
+
+<!-- Date -->
+<div class="flex items-center gap-2 mt-3">
+<span class="material-symbols-outlined text-outline text-sm">calendar_today</span>
+<span class="technical-data text-on-surface-variant text-sm">March 31, 2026</span>
+</div>
+</div>
+</section>
+
+<!-- Rep Signature Section -->
+<section class="mb-8">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">draw</span>
+<h3 class="font-bold text-[#010f21] text-lg">Rep Signature</h3>
+</div>
+<button class="text-primary text-sm font-semibold active:scale-95 transition-transform" onclick="clearCanvas('repCanvas')">Clear</button>
+</div>
+<canvas id="repCanvas" class="w-full bg-white rounded-xl" style="height: 120px; border: 2px solid #e1e3e4;" width="800" height="240"></canvas>
+<div class="flex items-center gap-2 mt-3">
+<span class="material-symbols-outlined text-outline text-sm">badge</span>
+<span class="technical-data text-on-surface-variant text-sm">Rep: Brock</span>
+</div>
+</div>
+</section>
+
+<!-- Action Buttons -->
+<section class="mb-8 space-y-3">
+<button id="completeSaleBtn" onclick="completeSale()" class="w-full bg-primary-container text-white h-14 rounded-xl font-bold text-base shadow-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-lg">task_alt</span>
+Complete Sale
+</button>
+<button onclick="savePending()" class="w-full bg-transparent text-primary h-14 rounded-xl font-bold text-base flex items-center justify-center gap-2 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-lg">save</span>
+Save as Pending
+</button>
+</section>
+
+</main>
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-[#010f21] border-t border-[#306574]/30 shadow-[0_-4px_20px_rgba(1,15,33,0.3)]">
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="dashboard.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="catalog.html">
+<span class="material-symbols-outlined">pool</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="pipeline.html">
+<span class="material-symbols-outlined">view_kanban</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Pipeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">More</span>
+</a>
+</nav>
+
+<script>
+// ─── Data Defaults ───────────────────────────────────────────
+let TOTAL = 14423.23;
+const MIN_DEPOSIT_PCT = 0.30;
+const API_BASE = 'http://localhost:8080';
+
+// Track IDs from loaded quote
+let loadedQuoteId = null;
+let loadedCustomerId = null;
+let loadedLeadId = null;
+
+// Read URL params
+const urlParams = new URLSearchParams(window.location.search);
+const paramQuoteId = urlParams.get('quote_id');
+
+// Load from API or use defaults
+async function loadQuoteData() {
+    // Load locations from API
+    try {
+        const locRes = await fetch(API_BASE + '/api/locations');
+        if (locRes.ok) {
+            const locations = await locRes.json();
+            const locSelect = document.getElementById('location');
+            locSelect.innerHTML = '';
+            locations.forEach((loc, i) => {
+                const opt = document.createElement('option');
+                opt.value = loc.id || loc.slug || loc.name.toLowerCase().replace(/\s+/g, '');
+                opt.textContent = loc.name;
+                if (i === 0) opt.selected = true;
+                locSelect.appendChild(opt);
+            });
+        }
+    } catch(e) { console.log('Could not load locations, using defaults'); }
+
+    // Load quote data from API if quote_id is present
+    if (!paramQuoteId) return;
+
+    try {
+        const res = await fetch(API_BASE + '/api/quotes');
+        if (!res.ok) return;
+        const quotes = await res.json();
+        const quote = quotes.find(q => String(q.id) === String(paramQuoteId));
+        if (!quote) return;
+
+        loadedQuoteId = quote.id;
+        loadedCustomerId = quote.customer_id;
+        loadedLeadId = quote.lead_id;
+
+        // Update customer info
+        const customerName = quote.customer_name || (quote.customer_first_name + ' ' + quote.customer_last_name) || 'Customer';
+        const custNameEl = document.querySelector('.mb-4 .font-semibold.text-base');
+        if (custNameEl) custNameEl.textContent = customerName;
+
+        if (quote.customer_phone) {
+            const phoneEl = document.querySelector('.technical-data.text-on-surface-variant.text-sm');
+            if (phoneEl) phoneEl.textContent = quote.customer_phone;
+        }
+        if (quote.customer_email) {
+            const emailEls = document.querySelectorAll('.technical-data.text-on-surface-variant.text-sm');
+            if (emailEls[1]) emailEls[1].textContent = quote.customer_email;
+        }
+
+        // Update product
+        const productName = quote.product_name || quote.model || 'Spa';
+        const prodEl = document.querySelectorAll('.mb-4')[1];
+        if (prodEl) {
+            const prodNameEl = prodEl.querySelector('.font-semibold.text-base');
+            if (prodNameEl) prodNameEl.textContent = productName;
+        }
+
+        // Update totals
+        const fmt = n => '$' + Number(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        if (quote.total !== undefined) {
+            TOTAL = Number(quote.total);
+        }
+
+        const subtotalEl = document.querySelector('.bg-surface-container-low .flex:nth-child(1) .technical-data');
+        const optionsEl = document.querySelector('.bg-surface-container-low .flex:nth-child(2) .technical-data');
+        const discountsEl = document.querySelector('.bg-surface-container-low .flex:nth-child(3) .technical-data');
+        const taxEl = document.querySelector('.bg-surface-container-low .flex:nth-child(4) .technical-data');
+        const totalEl = document.querySelector('.border-t .serif-display');
+
+        if (quote.subtotal !== undefined && subtotalEl) subtotalEl.textContent = fmt(quote.subtotal);
+        if (quote.options_total !== undefined && optionsEl) optionsEl.textContent = '+' + fmt(quote.options_total);
+        if (quote.discount !== undefined && discountsEl) discountsEl.textContent = '-' + fmt(quote.discount);
+        if (quote.tax !== undefined && taxEl) taxEl.textContent = '+' + fmt(quote.tax);
+        if (totalEl) totalEl.textContent = fmt(TOTAL);
+
+        // Update deposit minimum
+        const minDeposit = (TOTAL * MIN_DEPOSIT_PCT).toFixed(2);
+        const depositInput = document.getElementById('depositAmount');
+        depositInput.value = Number(minDeposit).toLocaleString('en-US', {minimumFractionDigits: 2});
+        document.querySelector('#depositAmount ~ p, .text-outline.text-xs').textContent = 'Minimum 30% = $' + Number(minDeposit).toLocaleString('en-US', {minimumFractionDigits: 2});
+        recalculateBalance();
+
+    } catch(e) {
+        console.error('Error loading quote data:', e);
+    }
+}
+
+// ─── Options Toggle ──────────────────────────────────────────
+function toggleOptions() {
+    const list = document.getElementById('optionsList');
+    const chevron = document.getElementById('optionsChevron');
+    list.classList.toggle('hidden');
+    chevron.style.transform = list.classList.contains('hidden') ? '' : 'rotate(180deg)';
+}
+
+// ─── Payment Method Chips ────────────────────────────────────
+let selectedPayment = 'credit';
+
+function selectPayment(el) {
+    document.querySelectorAll('.payment-chip').forEach(chip => {
+        chip.classList.remove('bg-primary-container', 'text-white', 'border-primary-container');
+        chip.classList.add('border-outline-variant', 'text-on-surface-variant');
+    });
+    el.classList.remove('border-outline-variant', 'text-on-surface-variant');
+    el.classList.add('bg-primary-container', 'text-white', 'border-primary-container');
+    selectedPayment = el.dataset.method;
+
+    const cardStatus = document.getElementById('cardReaderStatus');
+    cardStatus.style.display = selectedPayment === 'credit' ? 'flex' : 'none';
+}
+
+// ─── Deposit / Balance Calculation ───────────────────────────
+function recalculateBalance() {
+    const raw = document.getElementById('depositAmount').value.replace(/[^0-9.]/g, '');
+    const deposit = parseFloat(raw) || 0;
+    const balance = TOTAL - deposit;
+    document.getElementById('balanceDue').textContent = '$' + balance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+// ─── Signature Canvas Setup ─────────────────────────────────
+function setupCanvas(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    let lastX = 0, lastY = 0;
+
+    function resize() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        // Save existing drawing before resize
+        const imageData = canvas.width > 0 ? ctx.getImageData(0, 0, canvas.width, canvas.height) : null;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        // Restore drawing after resize
+        if (imageData) ctx.putImageData(imageData, 0, 0);
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.strokeStyle = '#010f21';
+    }
+
+    function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        if (e.touches) {
+            return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+        }
+        return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    function startDraw(e) {
+        e.preventDefault();
+        drawing = true;
+        const pos = getPos(e);
+        lastX = pos.x;
+        lastY = pos.y;
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+    }
+
+    function moveDraw(e) {
+        if (!drawing) return;
+        e.preventDefault();
+        const pos = getPos(e);
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+        lastX = pos.x;
+        lastY = pos.y;
+    }
+
+    function endDraw(e) {
+        drawing = false;
+    }
+
+    // Touch events
+    canvas.addEventListener('touchstart', startDraw, {passive: false});
+    canvas.addEventListener('touchmove', moveDraw, {passive: false});
+    canvas.addEventListener('touchend', endDraw);
+
+    // Mouse events
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', moveDraw);
+    canvas.addEventListener('mouseup', endDraw);
+    canvas.addEventListener('mouseleave', endDraw);
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    return { canvas, ctx, resize };
+}
+
+function clearCanvas(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// ─── Complete Sale ───────────────────────────────────────────
+async function completeSale() {
+    const depositRaw = document.getElementById('depositAmount').value.replace(/[^0-9.]/g, '');
+    const deposit = parseFloat(depositRaw) || 0;
+
+    const orderData = {
+        customer: document.querySelector('.mb-4 .font-semibold.text-base')?.textContent || 'Sarah Jenkins',
+        product: document.querySelectorAll('.mb-4')[1]?.querySelector('.font-semibold.text-base')?.textContent || 'Signature L-800 Spa',
+        total: TOTAL,
+        deposit: deposit,
+        balance: TOTAL - deposit,
+        paymentMethod: selectedPayment,
+        modelType: document.getElementById('modelType').value,
+        serialNumber: document.getElementById('serialNumber').value,
+        location: document.getElementById('location').value,
+        notes: document.getElementById('orderNotes').value,
+        termsAccepted: document.getElementById('termsCheckbox').checked,
+        completedAt: new Date().toISOString(),
+        rep: 'Brock'
+    };
+
+    // Always store in sessionStorage as fallback
+    sessionStorage.setItem('orderData', JSON.stringify(orderData));
+
+    // POST to API
+    try {
+        const apiPayload = {
+            quote_id: loadedQuoteId || paramQuoteId || null,
+            customer_id: loadedCustomerId || null,
+            deposit: deposit,
+            payment_method: selectedPayment,
+            balance: TOTAL - deposit,
+            model_type: document.getElementById('modelType').value,
+            serial_number: document.getElementById('serialNumber').value,
+            location: document.getElementById('location').value,
+            notes: document.getElementById('orderNotes').value,
+            lead_id: loadedLeadId || null
+        };
+
+        const res = await fetch(API_BASE + '/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(apiPayload)
+        });
+
+        if (res.ok) {
+            const result = await res.json();
+            // Store full result in sessionStorage for confirmation page
+            sessionStorage.setItem('orderData', JSON.stringify({ ...orderData, ...result }));
+            window.location.href = 'contract-confirmation.html?order_id=' + encodeURIComponent(result.id) + '&contract_number=' + encodeURIComponent(result.contract_number);
+            return;
+        }
+    } catch(e) {
+        console.error('API order POST failed, using sessionStorage fallback:', e);
+    }
+
+    // Fallback: navigate without API params
+    window.location.href = 'contract-confirmation.html';
+}
+
+// ─── Save as Pending ─────────────────────────────────────────
+function savePending() {
+    const depositRaw = document.getElementById('depositAmount').value.replace(/[^0-9.]/g, '');
+    const deposit = parseFloat(depositRaw) || 0;
+
+    const orderData = {
+        customer: document.querySelector('.mb-4 .font-semibold.text-base')?.textContent || 'Sarah Jenkins',
+        product: document.querySelectorAll('.mb-4')[1]?.querySelector('.font-semibold.text-base')?.textContent || 'Signature L-800 Spa',
+        total: TOTAL,
+        deposit: deposit,
+        balance: TOTAL - deposit,
+        paymentMethod: selectedPayment,
+        modelType: document.getElementById('modelType').value,
+        serialNumber: document.getElementById('serialNumber').value,
+        location: document.getElementById('location').value,
+        notes: document.getElementById('orderNotes').value,
+        status: 'pending',
+        savedAt: new Date().toISOString(),
+        rep: 'Brock'
+    };
+
+    sessionStorage.setItem('pendingOrder', JSON.stringify(orderData));
+
+    // Visual feedback
+    const btn = event.target.closest('button');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-lg">check</span> Saved';
+    btn.classList.add('text-emerald-600');
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('text-emerald-600');
+    }, 2000);
+}
+
+// ─── Init ────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    loadQuoteData();
+    setupCanvas('customerCanvas');
+    setupCanvas('repCanvas');
+});
+</script>
+
+</body></html>

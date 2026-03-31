@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Appointment Detail - Atlas Spas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&amp;family=Figtree:wght@300;400;500;600;700&amp;family=Roboto:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#39485c",
+              "surface-container-high": "#e7e8e9",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary-fixed-variant": "#004f54",
+              "surface": "#f8f9fa",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "primary-container": "#008189",
+              "outline-variant": "#bcc9ca",
+              "on-primary-fixed": "#002022",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#134d5b",
+              "primary": "#00666c",
+              "tertiary-fixed": "#d4e3fd",
+              "inverse-on-surface": "#f0f1f2",
+              "on-background": "#191c1d",
+              "tertiary-container": "#67758c",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "secondary-container": "#b6ebfc",
+              "surface-dim": "#d9dadb",
+              "on-secondary-fixed": "#001f27",
+              "surface-container": "#edeeef",
+              "on-tertiary-fixed": "#0d1c2f",
+              "inverse-primary": "#69d6df",
+              "outline": "#6d797a",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#376b7a",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#69d6df",
+              "inverse-surface": "#2e3132",
+              "on-tertiary-container": "#fdfcff",
+              "tertiary": "#4e5d72",
+              "surface-variant": "#e1e3e4",
+              "primary-fixed": "#87f3fb",
+              "background": "#f8f9fa",
+              "secondary": "#306574",
+              "on-surface": "#191c1d",
+              "surface-tint": "#00696f",
+              "tertiary-fixed-dim": "#b8c7e0",
+              "on-tertiary": "#ffffff",
+              "on-primary-container": "#f4feff",
+              "surface-container-low": "#f3f4f5",
+              "secondary-fixed": "#b6ebfc",
+              "secondary-fixed-dim": "#9bcfdf",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#3d494a"
+            },
+            fontFamily: {
+              "headline": ["Frank Ruhl Libre", "serif"],
+              "body": ["Figtree", "sans-serif"],
+              "label": ["Inter", "sans-serif"],
+              "data": ["Roboto", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 12px 32px rgba(1, 15, 33, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#010f21] dark:bg-[#010f21] shadow-lg">
+<div class="flex items-center gap-3">
+<a href="dashboard.html" class="text-white/70 hover:bg-white/10 p-2 rounded-full transition-all duration-200 active:scale-95" style="text-decoration:none">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<span class="font-['Frank_Ruhl_Libre'] font-bold tracking-tight text-xl text-white">Atlas Spas</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#00929C] transition-all duration-200 active:scale-95 cursor-pointer">sync</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-[#306574]">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a male sales representative in a clean studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8_Ppl2AXfqezs4hVbZsq4m8u1QMS7H-2ghAJx-SjTYlRo6pdbPjB-9YLuMVwcqheGXDB0lZSOVko4iHY-UFBGq6yluuq3JJ0n_nC9QvE9eK5hgn41iGj2aO6lh0a8Wq2AwZffoVdqMvrKs-HDBADT1vNXB1foVzdvbGiSucZ6cgV4QkyKGhBIvd2-k1l7OjfIqI2eUQ85CiLgplRbpdjifazZHYhUZMJkt65bRvIQejdXEf-gUAWrt7Do78I4Xj4rtWm7CdnUkIU5"/>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 bg-[#306574] h-[2px] w-full"></div>
+</header>
+<main class="pt-20 px-4 max-w-md mx-auto">
+<!-- Header Section -->
+<section class="mt-4 mb-8">
+<div class="flex items-center justify-between mb-2">
+<h1 class="font-headline text-4xl text-on-surface leading-tight tracking-tight">Maria Lopez</h1>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Priority</span>
+</div>
+<p class="text-secondary font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">badge</span>
+                Assigned Rep: <span class="text-on-surface">Jordan Smith</span>
+</p>
+</section>
+<!-- Cascade History Section (Bento Style) -->
+<section class="space-y-4 mb-8">
+<h2 class="font-headline text-2xl text-on-surface mb-4">Cascade History</h2>
+<div class="grid grid-cols-1 gap-4">
+<!-- Main Campaign Card -->
+<div class="bg-surface-container-lowest editorial-shadow rounded-xl p-5 border-l-4 border-primary">
+<div class="flex items-start justify-between mb-4">
+<div>
+<p class="text-outline text-xs font-bold uppercase tracking-widest mb-1 font-label">Campaign Source</p>
+<h3 class="font-headline text-xl text-on-surface">Spring Expo Email Blast</h3>
+</div>
+<span class="material-symbols-outlined text-primary">campaign</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-3 rounded-lg">
+<p class="text-outline text-[10px] font-bold uppercase mb-1">Engagement</p>
+<div class="flex items-center gap-2 text-on-surface-variant font-data font-medium">
+<span class="material-symbols-outlined text-sm">mail</span>
+<span>3 Opened</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg">
+<p class="text-outline text-[10px] font-bold uppercase mb-1">Texts</p>
+<div class="flex items-center gap-2 text-on-surface-variant font-data font-medium">
+<span class="material-symbols-outlined text-sm">sms</span>
+<span>1 Sent</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product & Location Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest editorial-shadow rounded-xl p-4 flex flex-col justify-between">
+<div>
+<p class="text-outline text-[10px] font-bold uppercase mb-2">Interest</p>
+<p class="font-body font-bold text-on-surface leading-tight">Twilight 7.25 Swim Spa</p>
+</div>
+<div class="mt-4 aspect-video rounded-lg overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="high-end luxury swim spa in a modern backyard patio with clean blue water and evening lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp7vcclIicyGXTBzkgip5J7Cvmbzj7zBMwd-eIKBeZzu72svQ8EmgqSOMgEYN_U8Xa1owH_cBHknZp8YkTJfdSU7cGgH8hgGvs39McHNJ_1Qc1IM6PmrWOw-XDbFT3J8nUOrX-TkuRv_L2tQr22HJznpZasoT7S8CfKLbMleGgqiZ4wCEycT_6JoOjsc48KLAkzUDUOprRo1st-8PPwEp78Enr-nlJY7B2Bo3FFE9jArFblEVg35TR2_wJgM8WNLY5e32OQi2mtOP4"/>
+</div>
+</div>
+<div class="bg-surface-container-lowest editorial-shadow rounded-xl p-4">
+<p class="text-outline text-[10px] font-bold uppercase mb-2">Prior Visits</p>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div>
+<p class="font-body font-bold text-on-surface text-sm">Dallas 2025</p>
+<p class="text-outline text-[10px]">Showroom Visit</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Buttons Area -->
+<section class="space-y-4 mb-8">
+<button class="w-full bg-[#008189] hover:bg-[#00666c] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all duration-200 active:scale-95 editorial-shadow">
+<span class="material-symbols-outlined">how_to_reg</span>
+                Check In
+            </button>
+<a href="quote-builder.html" class="w-full bg-[#00939B] hover:bg-[#008189] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all duration-200 active:scale-95 editorial-shadow block text-center" style="text-decoration:none">
+<span class="material-symbols-outlined">description</span>
+                Start Quote
+            </a>
+<button class="w-full border-2 border-outline-variant text-outline hover:bg-surface-container-low py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined">event_busy</span>
+                No Show
+            </button>
+</section>
+<!-- Notes Section -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline text-2xl text-on-surface">Notes</h2>
+<span class="text-outline text-xs font-label">Last updated 2h ago</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-1 editorial-shadow focus-within:ring-2 ring-primary transition-all">
+<textarea class="w-full bg-transparent border-none focus:ring-0 min-h-[160px] p-4 font-body text-on-surface-variant placeholder:text-outline/50 resize-none" placeholder="Add details about the prospect's yard requirements, timeline, or color preferences..."></textarea>
+<div class="h-[2px] w-full bg-outline-variant/30"></div>
+<div class="flex justify-between items-center p-3">
+<div class="flex gap-2">
+<button class="text-outline hover:text-primary p-1"><span class="material-symbols-outlined">attach_file</span></button>
+<button class="text-outline hover:text-primary p-1"><span class="material-symbols-outlined">mic</span></button>
+</div>
+<button class="text-primary font-bold text-sm px-4 py-1 hover:bg-primary/10 rounded-lg transition-colors">SAVE NOTE</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-[#010f21] dark:bg-[#010f21] shadow-[0_-4px_20px_rgba(1,15,33,0.3)] border-t border-[#306574]/30">
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#00929C]/10 text-[#00929C] rounded-xl px-3 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_add</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="catalog.html">
+<span class="material-symbols-outlined">pool</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="pipeline.html">
+<span class="material-symbols-outlined">view_kanban</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Pipeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">More</span>
+</a>
+</nav>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const appointmentId = params.get('id');
+
+    const res = await fetch('http://localhost:8080/api/appointments');
+    const appointments = await res.json();
+
+    let appt = appointments[0];
+    if (appointmentId) {
+      const found = appointments.find(a => String(a.id) === appointmentId);
+      if (found) appt = found;
+    }
+    if (!appt) return;
+
+    // Update customer name
+    const nameEl = document.querySelector('h1.font-headline');
+    if (nameEl) nameEl.textContent = `${appt.first_name} ${appt.last_name}`;
+
+    // Update assigned rep
+    if (appt.assigned_rep) {
+      const repSpan = document.querySelector('p.text-secondary span.text-on-surface');
+      if (repSpan) repSpan.textContent = appt.assigned_rep;
+    }
+
+    // Update product interest
+    if (appt.product_interest) {
+      const interestEl = document.querySelector('.grid.grid-cols-2.gap-4 .font-body.font-bold');
+      if (interestEl) interestEl.textContent = appt.product_interest;
+    }
+
+    // Update cascade source
+    if (appt.cascade_source) {
+      const sourceEl = document.querySelector('.border-l-4.border-primary h3.font-headline');
+      if (sourceEl) sourceEl.textContent = appt.cascade_source;
+    }
+
+    // Update emails opened
+    if (appt.emails_opened !== undefined) {
+      const engagementSpan = document.querySelector('.grid.grid-cols-2.gap-4 .bg-surface-container-low:first-child .font-data span:last-child');
+      if (!engagementSpan) {
+        const engagementDivs = document.querySelectorAll('.border-l-4.border-primary .grid.grid-cols-2 .bg-surface-container-low');
+        if (engagementDivs[0]) {
+          const span = engagementDivs[0].querySelector('.font-data');
+          if (span) {
+            const textNode = span.querySelector('span:not(.material-symbols-outlined)');
+            if (textNode) textNode.textContent = `${appt.emails_opened} Opened`;
+          }
+        }
+      }
+    }
+
+    // Update texts sent
+    if (appt.texts_sent !== undefined) {
+      const textDivs = document.querySelectorAll('.border-l-4.border-primary .grid.grid-cols-2 .bg-surface-container-low');
+      if (textDivs[1]) {
+        const span = textDivs[1].querySelector('.font-data');
+        if (span) {
+          const textNode = span.querySelector('span:not(.material-symbols-outlined)');
+          if (textNode) textNode.textContent = `${appt.texts_sent} Sent`;
+        }
+      }
+    }
+
+    // Update Start Quote link with params
+    const quoteLink = document.querySelector('a[href="quote-builder.html"]');
+    if (quoteLink) {
+      const product = encodeURIComponent(appt.product_interest || '');
+      quoteLink.href = `quote-builder.html?customer_id=${appt.customer_id}&product_interest=${product}`;
+    }
+
+  } catch (err) {
+    console.error('Failed to load appointment data:', err);
+  }
+});
+</script>
+</body></html>

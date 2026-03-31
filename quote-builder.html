@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;800&family=Figtree:wght@400;500;600;700&family=Roboto:wght@400;500&family=Newsreader:opsz,wght@6..72,400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+        font-family: 'Figtree', sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    .serif-display {
+        font-family: 'Frank Ruhl Libre', serif;
+    }
+    .technical-data {
+        font-family: 'Roboto', sans-serif;
+    }
+    .glass-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    /* Custom toggle switch */
+    .toggle-track {
+        width: 44px;
+        height: 24px;
+        border-radius: 12px;
+        background: #bcc9ca;
+        position: relative;
+        cursor: pointer;
+        transition: background 0.15s;
+        flex-shrink: 0;
+    }
+    .toggle-track.active {
+        background: #008189;
+    }
+    .toggle-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        transition: transform 0.15s;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .toggle-track.active .toggle-thumb {
+        transform: translateX(20px);
+    }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-tertiary-fixed-variant": "#39485c",
+          "surface-container-high": "#e7e8e9",
+          "surface-container-highest": "#e1e3e4",
+          "on-primary-fixed-variant": "#004f54",
+          "surface": "#f8f9fa",
+          "error-container": "#ffdad6",
+          "error": "#ba1a1a",
+          "primary-container": "#008189",
+          "outline-variant": "#bcc9ca",
+          "on-primary-fixed": "#002022",
+          "on-primary": "#ffffff",
+          "on-secondary-fixed-variant": "#134d5b",
+          "primary": "#00666c",
+          "tertiary-fixed": "#d4e3fd",
+          "inverse-on-surface": "#f0f1f2",
+          "on-background": "#191c1d",
+          "tertiary-container": "#67758c",
+          "surface-container-lowest": "#ffffff",
+          "surface-bright": "#f8f9fa",
+          "secondary-container": "#b6ebfc",
+          "surface-dim": "#d9dadb",
+          "on-secondary-fixed": "#001f27",
+          "surface-container": "#edeeef",
+          "on-tertiary-fixed": "#0d1c2f",
+          "inverse-primary": "#69d6df",
+          "outline": "#6d797a",
+          "on-error-container": "#93000a",
+          "on-secondary-container": "#376b7a",
+          "on-error": "#ffffff",
+          "primary-fixed-dim": "#69d6df",
+          "inverse-surface": "#2e3132",
+          "on-tertiary-container": "#fdfcff",
+          "tertiary": "#4e5d72",
+          "surface-variant": "#e1e3e4",
+          "primary-fixed": "#87f3fb",
+          "background": "#f8f9fa",
+          "secondary": "#306574",
+          "on-surface": "#191c1d",
+          "surface-tint": "#00696f",
+          "tertiary-fixed-dim": "#b8c7e0",
+          "on-tertiary": "#ffffff",
+          "on-primary-container": "#f4feff",
+          "surface-container-low": "#f3f4f5",
+          "secondary-fixed": "#b6ebfc",
+          "secondary-fixed-dim": "#9bcfdf",
+          "on-secondary": "#ffffff",
+          "on-surface-variant": "#3d494a"
+        },
+        fontFamily: {
+          "headline": ["Newsreader"],
+          "body": ["Manrope"],
+          "label": ["Inter"]
+        },
+        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+      },
+    },
+  }
+</script>
+<style>
+body {
+  min-height: max(884px, 100dvh);
+}
+</style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-40">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#010f21] dark:bg-[#010f21] shadow-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00929C] transition-all duration-200 active:scale-95" data-icon="sync">sync</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-white/70 text-xs font-medium tracking-widest uppercase">Online</span>
+</div>
+</div>
+<h1 class="font-['Frank_Ruhl_Libre'] font-bold tracking-tight text-xl text-white">Atlas Spas</h1>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" data-icon="person">person</span>
+</div>
+</header>
+<div class="bg-[#306574] h-[2px] w-full fixed top-16 z-50"></div>
+
+<!-- Customer Summary Strip -->
+<div class="fixed top-[66px] left-0 w-full z-40 bg-surface-container-low px-4 py-3 flex items-center gap-3">
+<button onclick="history.back()" class="min-w-[44px] min-h-[44px] flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+</button>
+<p class="text-on-surface text-sm font-medium" id="customer-strip">Loading...</p>
+</div>
+
+<main class="pt-[120px] px-5 pb-80">
+
+<!-- Selected Model Card -->
+<section class="mb-6">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
+<div class="flex items-start justify-between mb-3">
+<div>
+<h2 class="serif-display text-2xl text-[#010f21] leading-tight" id="model-name">Loading...</h2>
+<span class="inline-block mt-2 bg-primary-container text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider" id="model-category"></span>
+</div>
+</div>
+<div class="flex items-end justify-between mt-4">
+<div>
+<p class="text-outline text-[10px] font-bold uppercase tracking-tighter mb-1" id="price-label">MSRP</p>
+<p class="serif-display text-3xl text-[#010f21]" id="base-price-display">--</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant text-xs font-medium">Expo Discount</span>
+<div class="toggle-track" id="expo-toggle" onclick="toggleExpo()">
+<div class="toggle-thumb"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Customize Options -->
+<section class="mb-6">
+<h3 class="serif-display text-lg text-[#010f21] mb-4">Customize Options</h3>
+<div class="space-y-2" id="options-list">
+<!-- Populated from API -->
+</div>
+</section>
+
+<!-- Apply Discounts -->
+<section class="mb-6">
+<h3 class="serif-display text-lg text-[#010f21] mb-4">Apply Discounts</h3>
+<div class="flex flex-wrap gap-2" id="discounts-list">
+<!-- Populated from API -->
+</div>
+</section>
+
+<!-- Financing Section -->
+<section class="mb-6">
+<button class="flex items-center justify-between w-full py-3" onclick="toggleFinancing()">
+<h3 class="serif-display text-lg text-[#010f21]">Financing</h3>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform" id="financing-chevron">expand_more</span>
+</button>
+<div id="financing-panel" class="hidden">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_4px_12px_rgba(1,15,33,0.02)]">
+<label class="text-on-surface-variant text-xs font-bold uppercase tracking-wider mb-2 block">Financing Company</label>
+<select id="financing-select" onchange="updateFinancing()" class="w-full bg-surface-container rounded-xl px-4 py-3 text-on-surface text-sm font-medium border-0 min-h-[44px] focus:ring-2 focus:ring-primary-container">
+<option value="">None</option>
+<!-- Populated from API -->
+</select>
+<p id="financing-estimate" class="mt-3 text-primary text-sm font-semibold hidden"></p>
+</div>
+</div>
+</section>
+
+<!-- Tax Line -->
+<section class="mb-6">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_4px_12px_rgba(1,15,33,0.02)] flex items-center justify-between">
+<div class="flex-1">
+<p class="text-on-surface text-sm font-medium">Texas Sales Tax (8.25%)</p>
+<p class="technical-data text-on-surface-variant text-lg font-medium" id="tax-amount">$0.00</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant text-xs font-medium">Tax Exempt</span>
+<div class="toggle-track" id="tax-exempt-toggle" onclick="toggleTaxExempt()">
+<div class="toggle-thumb"></div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- Sticky Bottom Summary Bar -->
+<div class="fixed bottom-20 left-0 w-full z-40 glass-card border-t border-outline-variant/30 px-5 pt-4 pb-4 shadow-[0_-8px_24px_rgba(1,15,33,0.08)]">
+<div class="space-y-1 mb-3">
+<div class="flex justify-between">
+<span class="text-on-surface-variant text-sm">Subtotal</span>
+<span class="technical-data text-on-surface text-sm font-medium" id="sum-subtotal">$0.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant text-sm">Options</span>
+<span class="technical-data text-primary text-sm font-medium" id="sum-options">+$0.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant text-sm">Discounts</span>
+<span class="technical-data text-error text-sm font-medium" id="sum-discounts">-$0.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant text-sm">Tax (8.25%)</span>
+<span class="technical-data text-on-surface-variant text-sm font-medium" id="sum-tax">+$0.00</span>
+</div>
+<div class="border-t border-outline-variant/40 my-2"></div>
+<div class="flex justify-between">
+<span class="text-[#010f21] text-base font-bold">Total</span>
+<span class="serif-display text-[#010f21] text-xl font-bold" id="sum-total">$0.00</span>
+</div>
+</div>
+<button onclick="continueToContract()" class="w-full bg-primary-container text-white min-h-[56px] rounded-xl font-bold text-base flex items-center justify-center gap-2 active:scale-[0.98] transition-transform shadow-lg">
+Continue to Contract
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-[#010f21] dark:bg-[#010f21] border-t border-[#306574]/30 shadow-[0_-4px_20px_rgba(1,15,33,0.3)]">
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="catalog.html">
+<span class="material-symbols-outlined" data-icon="pool">pool</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="pipeline.html">
+<span class="material-symbols-outlined" data-icon="view_kanban">view_kanban</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Pipeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">More</span>
+</a>
+</nav>
+
+<script>
+const API_BASE = 'http://localhost:8080';
+
+// URL params
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('product_id') || '1';
+const customerId = urlParams.get('customer_id') || '';
+const customerName = urlParams.get('customer_name') || 'Sarah Jenkins';
+
+// State
+let expoDiscount = false;
+let taxExempt = false;
+let docFeeWaived = false;
+let MSRP = 0;
+let FLOOR_PRICE = 0;
+const TAX_RATE = 0.0825;
+let productData = null;
+
+function getBasePrice() {
+    return expoDiscount ? FLOOR_PRICE : MSRP;
+}
+
+function getSelectedOptions() {
+    let total = 0;
+    document.querySelectorAll('.option-row.selected').forEach(row => {
+        const price = parseInt(row.dataset.price);
+        if (row.dataset.waivable === 'true' && docFeeWaived) {
+            return;
+        }
+        total += price;
+    });
+    return total;
+}
+
+function getSelectedDiscounts() {
+    let total = 0;
+    document.querySelectorAll('.discount-chip.selected').forEach(chip => {
+        total += parseInt(chip.dataset.discount);
+    });
+    return total;
+}
+
+function fmt(n) {
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function fmtPrice(n) {
+    return '$' + Number(n).toLocaleString();
+}
+
+function recalc() {
+    const base = getBasePrice();
+    const options = getSelectedOptions();
+    const discounts = getSelectedDiscounts();
+    const preTax = base + options - discounts;
+    const tax = taxExempt ? 0 : preTax * TAX_RATE;
+    const total = preTax + tax;
+
+    document.getElementById('sum-subtotal').textContent = fmt(base);
+    document.getElementById('sum-options').textContent = '+' + fmt(options);
+    document.getElementById('sum-discounts').textContent = '-' + fmt(discounts);
+    document.getElementById('sum-tax').textContent = '+' + fmt(tax);
+    document.getElementById('sum-total').textContent = fmt(total);
+    document.getElementById('tax-amount').textContent = fmt(tax);
+
+    updateFinancing();
+}
+
+function toggleExpo() {
+    expoDiscount = !expoDiscount;
+    const toggle = document.getElementById('expo-toggle');
+    toggle.classList.toggle('active', expoDiscount);
+    document.getElementById('price-label').textContent = expoDiscount ? 'FLOOR PRICE' : 'MSRP';
+    document.getElementById('base-price-display').textContent = expoDiscount ? fmtPrice(FLOOR_PRICE) : fmtPrice(MSRP);
+    recalc();
+}
+
+function toggleOption(row) {
+    row.classList.toggle('selected');
+    const check = row.querySelector('.option-check');
+    const icon = check.querySelector('.material-symbols-outlined');
+    if (row.classList.contains('selected')) {
+        check.style.background = '#008189';
+        check.style.borderColor = '#008189';
+        icon.classList.remove('hidden');
+        row.style.borderLeft = '3px solid #008189';
+    } else {
+        check.style.background = '';
+        check.style.borderColor = '';
+        icon.classList.add('hidden');
+        row.style.borderLeft = '';
+    }
+    recalc();
+}
+
+function toggleDiscount(chip) {
+    chip.classList.toggle('selected');
+    const icon = chip.querySelector('.chip-check');
+    if (chip.classList.contains('selected')) {
+        chip.style.background = '#008189';
+        chip.style.borderColor = '#008189';
+        chip.style.color = '#ffffff';
+        icon.classList.remove('hidden');
+    } else {
+        chip.style.background = '';
+        chip.style.borderColor = '';
+        chip.style.color = '';
+        icon.classList.add('hidden');
+    }
+    recalc();
+}
+
+function toggleWaiveDoc() {
+    docFeeWaived = !docFeeWaived;
+    const toggle = document.getElementById('waive-doc-toggle');
+    toggle.classList.toggle('active', docFeeWaived);
+    recalc();
+}
+
+function toggleTaxExempt() {
+    taxExempt = !taxExempt;
+    const toggle = document.getElementById('tax-exempt-toggle');
+    toggle.classList.toggle('active', taxExempt);
+    recalc();
+}
+
+function toggleFinancing() {
+    const panel = document.getElementById('financing-panel');
+    const chevron = document.getElementById('financing-chevron');
+    panel.classList.toggle('hidden');
+    chevron.style.transform = panel.classList.contains('hidden') ? '' : 'rotate(180deg)';
+}
+
+function updateFinancing() {
+    const sel = document.getElementById('financing-select');
+    const est = document.getElementById('financing-estimate');
+    const opt = sel.options[sel.selectedIndex];
+
+    if (!sel.value) {
+        est.classList.add('hidden');
+        return;
+    }
+
+    const rate = parseFloat(opt.dataset.rate);
+    const term = parseInt(opt.dataset.term);
+    const base = getBasePrice();
+    const options = getSelectedOptions();
+    const discounts = getSelectedDiscounts();
+    const preTax = base + options - discounts;
+    const tax = taxExempt ? 0 : preTax * TAX_RATE;
+    const total = preTax + tax;
+    const financed = total * 0.7; // 70% after 30% deposit
+
+    const monthlyRate = (rate / 100) / 12;
+    const monthly = financed * (monthlyRate * Math.pow(1 + monthlyRate, term)) / (Math.pow(1 + monthlyRate, term) - 1);
+    const monthlyLow = monthly * 0.9;
+    const monthlyHigh = monthly * 1.1;
+
+    est.textContent = term + 'mo @ ' + rate.toFixed(2) + '% \u00B7 Est. $' + Math.round(monthlyLow) + '\u2013$' + Math.round(monthlyHigh) + '/mo';
+    est.classList.remove('hidden');
+}
+
+function renderOptions(options) {
+    const container = document.getElementById('options-list');
+    let html = '';
+    options.forEach(opt => {
+        const isWaivable = opt.waivable || false;
+        const priceFormatted = Number(opt.price).toLocaleString();
+        html += `<div class="option-row bg-surface-container-lowest rounded-xl flex items-center px-4 min-h-[52px] shadow-[0_4px_12px_rgba(1,15,33,0.02)] cursor-pointer" data-price="${opt.price}" data-option-id="${opt.id}" ${isWaivable ? 'data-waivable="true"' : ''} onclick="toggleOption(this)">
+<div class="w-6 h-6 rounded-md border-2 border-outline-variant flex items-center justify-center mr-4 flex-shrink-0 option-check"><span class="material-symbols-outlined text-white text-sm hidden">check</span></div>
+<span class="flex-1 text-on-surface text-sm font-medium">${opt.name}</span>
+<span class="technical-data text-on-surface-variant text-sm font-medium">+$${priceFormatted}</span>
+${isWaivable ? `<div class="ml-3 flex items-center gap-2" onclick="event.stopPropagation()">
+<span class="text-on-surface-variant text-[10px] font-bold uppercase tracking-wider">Waive</span>
+<div class="toggle-track" style="width:36px;height:20px;" id="waive-doc-toggle" onclick="toggleWaiveDoc()">
+<div class="toggle-thumb" style="width:16px;height:16px;"></div>
+</div>
+</div>` : ''}
+</div>`;
+    });
+    container.innerHTML = html;
+}
+
+function renderDiscounts(discounts) {
+    const container = document.getElementById('discounts-list');
+    let html = '';
+    discounts.forEach(d => {
+        const amount = d.amount || d.value || 0;
+        html += `<button class="discount-chip border-2 border-outline-variant text-on-surface-variant rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 min-h-[44px]" data-discount="${amount}" data-discount-id="${d.id || ''}" onclick="toggleDiscount(this)">
+<span class="chip-check material-symbols-outlined text-sm hidden">check</span>
+${d.name} -$${Number(amount).toLocaleString()}
+</button>`;
+    });
+    container.innerHTML = html;
+}
+
+function renderFinancing(plans) {
+    const sel = document.getElementById('financing-select');
+    // Keep the "None" option
+    let html = '<option value="">None</option>';
+    plans.forEach(plan => {
+        const val = plan.slug || plan.id || plan.name.toLowerCase().replace(/\s+/g, '_');
+        html += `<option value="${val}" data-rate="${plan.rate}" data-term="${plan.term}">${plan.name}</option>`;
+    });
+    sel.innerHTML = html;
+}
+
+async function continueToContract() {
+    const base = getBasePrice();
+    const options = getSelectedOptions();
+    const discounts = getSelectedDiscounts();
+    const preTax = base + options - discounts;
+    const tax = taxExempt ? 0 : preTax * TAX_RATE;
+    const total = preTax + tax;
+
+    const selectedOptions = [];
+    document.querySelectorAll('.option-row.selected').forEach(row => {
+        const name = row.querySelector('.flex-1').textContent.trim();
+        const price = parseInt(row.dataset.price);
+        const optionId = row.dataset.optionId;
+        if (row.dataset.waivable === 'true' && docFeeWaived) return;
+        selectedOptions.push({ id: optionId, name, price });
+    });
+
+    const selectedDiscounts = [];
+    document.querySelectorAll('.discount-chip.selected').forEach(chip => {
+        selectedDiscounts.push({
+            id: chip.dataset.discountId,
+            name: chip.textContent.trim().replace('check', '').trim(),
+            amount: parseInt(chip.dataset.discount)
+        });
+    });
+
+    const sel = document.getElementById('financing-select');
+    let financing = null;
+    if (sel.value) {
+        const opt = sel.options[sel.selectedIndex];
+        financing = {
+            id: sel.value,
+            company: opt.textContent.trim(),
+            rate: parseFloat(opt.dataset.rate),
+            term: parseInt(opt.dataset.term)
+        };
+    }
+
+    const quotePayload = {
+        product_id: parseInt(productId),
+        customer_id: customerId ? parseInt(customerId) : null,
+        customer_name: customerName,
+        model: productData ? productData.name : '',
+        base_price: base,
+        expo_discount: expoDiscount,
+        options: selectedOptions,
+        options_total: options,
+        discounts: selectedDiscounts,
+        discounts_total: discounts,
+        tax_exempt: taxExempt,
+        tax_rate: TAX_RATE,
+        tax: tax,
+        total: total,
+        financing: financing,
+        doc_fee_waived: docFeeWaived
+    };
+
+    try {
+        const res = await fetch(API_BASE + '/api/quotes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(quotePayload)
+        });
+        if (!res.ok) throw new Error('Failed to create quote');
+        const result = await res.json();
+        window.location.href = 'order-close.html?quote_id=' + result.id;
+    } catch (err) {
+        console.error('Error creating quote:', err);
+        // Fallback: save to sessionStorage and navigate
+        sessionStorage.setItem('atlasQuote', JSON.stringify(quotePayload));
+        window.location.href = 'order-close.html';
+    }
+}
+
+// Initialize from API
+document.addEventListener('DOMContentLoaded', async () => {
+    // Set customer strip
+    document.getElementById('customer-strip').innerHTML = customerName + ' <span class="text-on-surface-variant mx-1">&middot;</span> Loading...';
+
+    try {
+        // Fetch product data first
+        const productRes = await fetch(API_BASE + '/api/products/' + productId);
+        if (!productRes.ok) throw new Error('Failed to fetch product');
+        productData = await productRes.json();
+
+        MSRP = Number(productData.msrp);
+        FLOOR_PRICE = Number(productData.floor_price);
+
+        // Update model card
+        document.getElementById('model-name').textContent = productData.name;
+        const catLabel = productData.category.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        document.getElementById('model-category').textContent = catLabel;
+        document.getElementById('base-price-display').textContent = fmtPrice(MSRP);
+        document.getElementById('customer-strip').innerHTML = customerName + ' <span class="text-on-surface-variant mx-1">&middot;</span> ' + productData.name;
+
+        // Fetch options, discounts, financing in parallel
+        const [optionsRes, discountsRes, financingRes] = await Promise.all([
+            fetch(API_BASE + '/api/options?category=' + productData.category),
+            fetch(API_BASE + '/api/discounts'),
+            fetch(API_BASE + '/api/financing')
+        ]);
+
+        if (optionsRes.ok) {
+            const options = await optionsRes.json();
+            renderOptions(options);
+        }
+
+        if (discountsRes.ok) {
+            const discounts = await discountsRes.json();
+            renderDiscounts(discounts);
+        }
+
+        if (financingRes.ok) {
+            const financing = await financingRes.json();
+            renderFinancing(financing);
+        }
+
+        recalc();
+    } catch (err) {
+        console.error('Error loading quote builder data:', err);
+        document.getElementById('model-name').textContent = 'Error loading product';
+    }
+});
+</script>
+
+</body></html>

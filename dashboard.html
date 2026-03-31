@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;800&amp;family=Figtree:wght@400;500;600;700&amp;family=Roboto:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Figtree', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif-display {
+            font-family: 'Frank Ruhl Libre', serif;
+        }
+        .technical-data {
+            font-family: 'Roboto', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#39485c",
+              "surface-container-high": "#e7e8e9",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary-fixed-variant": "#004f54",
+              "surface": "#f8f9fa",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "primary-container": "#008189",
+              "outline-variant": "#bcc9ca",
+              "on-primary-fixed": "#002022",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#134d5b",
+              "primary": "#00666c",
+              "tertiary-fixed": "#d4e3fd",
+              "inverse-on-surface": "#f0f1f2",
+              "on-background": "#191c1d",
+              "tertiary-container": "#67758c",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "secondary-container": "#b6ebfc",
+              "surface-dim": "#d9dadb",
+              "on-secondary-fixed": "#001f27",
+              "surface-container": "#edeeef",
+              "on-tertiary-fixed": "#0d1c2f",
+              "inverse-primary": "#69d6df",
+              "outline": "#6d797a",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#376b7a",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#69d6df",
+              "inverse-surface": "#2e3132",
+              "on-tertiary-container": "#fdfcff",
+              "tertiary": "#4e5d72",
+              "surface-variant": "#e1e3e4",
+              "primary-fixed": "#87f3fb",
+              "background": "#f8f9fa",
+              "secondary": "#306574",
+              "on-surface": "#191c1d",
+              "surface-tint": "#00696f",
+              "tertiary-fixed-dim": "#b8c7e0",
+              "on-tertiary": "#ffffff",
+              "on-primary-container": "#f4feff",
+              "surface-container-low": "#f3f4f5",
+              "secondary-fixed": "#b6ebfc",
+              "secondary-fixed-dim": "#9bcfdf",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#3d494a"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-40">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#010f21] dark:bg-[#010f21] shadow-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00929C] transition-all duration-200 active:scale-95" data-icon="sync">sync</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-white/70 text-xs font-medium tracking-widest uppercase">Online</span>
+</div>
+</div>
+<h1 class="font-['Frank_Ruhl_Libre'] font-bold tracking-tight text-xl text-white">Atlas Spas</h1>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" data-icon="person">person</span>
+</div>
+</header>
+<div class="bg-[#306574] h-[2px] w-full fixed top-16 z-50"></div>
+<main class="pt-24 px-6">
+<!-- Event Header -->
+<section class="mb-8">
+<div class="flex flex-col gap-1">
+<p class="text-primary font-semibold text-xs uppercase tracking-widest">Active Expo</p>
+<h2 class="serif-display text-3xl text-[#010f21] leading-tight">Dallas Home &amp; Garden Show — March 30, 2026</h2>
+</div>
+</section>
+<!-- Quick Stats Row -->
+<section class="mb-10 -mx-6">
+<div class="flex overflow-x-auto px-6 gap-4 hide-scrollbar">
+<!-- KPI Card 1 -->
+<div class="flex-shrink-0 w-32 p-4 bg-surface-container-lowest border-l-4 border-primary rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
+<p class="text-outline text-[10px] font-bold uppercase tracking-tighter mb-1">Appointments</p>
+<p class="serif-display text-2xl text-on-surface">12</p>
+</div>
+<!-- KPI Card 2 -->
+<div class="flex-shrink-0 w-32 p-4 bg-surface-container-lowest border-l-4 border-primary rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
+<p class="text-outline text-[10px] font-bold uppercase tracking-tighter mb-1">Checked In</p>
+<p class="serif-display text-2xl text-on-surface">4</p>
+</div>
+<!-- KPI Card 3 -->
+<div class="flex-shrink-0 w-32 p-4 bg-surface-container-lowest border-l-4 border-primary rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
+<p class="text-outline text-[10px] font-bold uppercase tracking-tighter mb-1">Walk-Ins</p>
+<p class="serif-display text-2xl text-on-surface">6</p>
+</div>
+<!-- KPI Card 4 -->
+<div class="flex-shrink-0 w-32 p-4 bg-surface-container-lowest border-l-4 border-primary rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
+<p class="text-outline text-[10px] font-bold uppercase tracking-tighter mb-1">Quotes</p>
+<p class="serif-display text-2xl text-on-surface">8</p>
+</div>
+<!-- KPI Card 5 -->
+<div class="flex-shrink-0 w-40 p-4 bg-secondary text-on-primary rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.1)]">
+<p class="text-white/70 text-[10px] font-bold uppercase tracking-tighter mb-1">Revenue</p>
+<p class="serif-display text-2xl">$47,500</p>
+</div>
+</div>
+</section>
+<!-- Upcoming Appointments -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="serif-display text-xl text-on-surface">Upcoming Appointments</h3>
+<button class="text-primary text-sm font-semibold">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Appointment Card 1 -->
+<a href="appointment.html" style="text-decoration:none;color:inherit" class="bg-surface-container-lowest p-5 rounded-xl flex items-start gap-4 shadow-[0_12px_32px_rgba(1,15,33,0.04)] relative overflow-hidden block">
+<div class="bg-primary-container/10 px-3 py-2 rounded-lg flex flex-col items-center justify-center min-w-[60px]">
+<p class="technical-data text-primary font-bold text-sm">10:30</p>
+<p class="technical-data text-primary/70 text-[10px] uppercase">AM</p>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-[#010f21] text-lg mb-1">Marcus Thorne</h4>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="pool">pool</span>
+<p class="text-on-surface-variant text-sm">Atlas X-Series 17’</p>
+</div>
+<span class="inline-block bg-surface-container-high text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Cascade High-Intent</span>
+</div>
+<button class="self-center">
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+</a>
+<!-- Appointment Card 2 -->
+<a href="appointment.html" style="text-decoration:none;color:inherit" class="bg-surface-container-lowest p-5 rounded-xl flex items-start gap-4 shadow-[0_12px_32px_rgba(1,15,33,0.04)] relative overflow-hidden block">
+<div class="bg-primary-container/10 px-3 py-2 rounded-lg flex flex-col items-center justify-center min-w-[60px]">
+<p class="technical-data text-primary font-bold text-sm">11:15</p>
+<p class="technical-data text-primary/70 text-[10px] uppercase">AM</p>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-[#010f21] text-lg mb-1">Sarah Jenkins</h4>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="hot_tub">hot_tub</span>
+<p class="text-on-surface-variant text-sm">Signature L-800 Spa</p>
+</div>
+<span class="inline-block bg-surface-container-high text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Retargeting Flow</span>
+</div>
+<button class="self-center">
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+</a>
+<!-- Appointment Card 3 -->
+<a href="appointment.html" style="text-decoration:none;color:inherit" class="bg-surface-container-lowest p-5 rounded-xl flex items-start gap-4 shadow-[0_12px_32px_rgba(1,15,33,0.04)] relative overflow-hidden block">
+<div class="bg-primary-container/10 px-3 py-2 rounded-lg flex flex-col items-center justify-center min-w-[60px]">
+<p class="technical-data text-primary font-bold text-sm">1:00</p>
+<p class="technical-data text-primary/70 text-[10px] uppercase">PM</p>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-[#010f21] text-lg mb-1">Robert Chen</h4>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="pool">pool</span>
+<p class="text-on-surface-variant text-sm">Titan Swim-Gym Duo</p>
+</div>
+<span class="inline-block bg-surface-container-high text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Showroom Referral</span>
+</div>
+<button class="self-center">
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+</a>
+</div>
+</section>
+<!-- Floor Map Quick View (Editorial Style) -->
+<section class="mb-12 relative h-48 rounded-2xl overflow-hidden group">
+<img alt="Expo Floor Map" class="w-full h-full object-cover grayscale brightness-50" data-alt="Modern high-end convention center exhibition floor with bright overhead lighting and sleek corporate booths" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByLL0iSwO2djdrG8E7Y_YoYXaIWAmMHS5AIxfdoOM5ZU4FG9o_pzNpfHjLeryl90vsiE0dsEB9_DA6tEN-nCPLavU9Q2PNY9BWV3sUXH3ELc9A5L35POPAhdvyBKEVwH_vQcNlrXWBC-_Nw2EzB24hMC6JV4R51Nl-OkcpXHWS4RPJltKfZfPAnMVdzMOM_cTt65kK-8KLWCfJ8-VpXavamNpMHni7UmAxJL337NVjOWcgXt51DnK66kVq0JI8IyuPkl1xbr46kHd3"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#010f21] to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<h4 class="serif-display text-white text-xl">Booth #402 Location</h4>
+<p class="text-white/60 text-xs">Aisle 4 - Near Main Entrance</p>
+</div>
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-[#00929C] bg-white/10 backdrop-blur-md p-2 rounded-full" data-icon="map">map</span>
+</div>
+</section>
+</main>
+<!-- Contextual Quick Action Buttons (Thumb Reachable) -->
+<div class="fixed bottom-24 left-0 w-full px-6 flex gap-3 pointer-events-none">
+<a href="appointment.html" class="pointer-events-auto flex-1 bg-primary-container text-white py-4 px-4 rounded-xl font-bold text-sm shadow-xl flex items-center justify-center gap-2 active:scale-95 transition-all" style="text-decoration:none">
+<span class="material-symbols-outlined text-lg" data-icon="how_to_reg">how_to_reg</span>
+            Check In
+        </a>
+<a href="walk-in.html" class="pointer-events-auto flex-1 bg-[#00939B] text-white py-4 px-4 rounded-xl font-bold text-sm shadow-xl flex items-center justify-center gap-2 active:scale-95 transition-all" style="text-decoration:none">
+<span class="material-symbols-outlined text-lg" data-icon="person_add">person_add</span>
+            New Walk-In
+        </a>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-[#010f21] dark:bg-[#010f21] border-t border-[#306574]/30 shadow-[0_-4px_20px_rgba(1,15,33,0.3)]">
+<a class="flex flex-col items-center justify-center bg-[#00929C]/10 text-[#00929C] rounded-xl px-3 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="catalog.html">
+<span class="material-symbols-outlined" data-icon="pool">pool</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="pipeline.html">
+<span class="material-symbols-outlined" data-icon="view_kanban">view_kanban</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Pipeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">More</span>
+</a>
+</nav>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const [dashRes, apptRes] = await Promise.all([
+      fetch('http://localhost:8080/api/dashboard'),
+      fetch('http://localhost:8080/api/appointments')
+    ]);
+    const dashboard = await dashRes.json();
+    const appointments = await apptRes.json();
+
+    // Update event title
+    if (dashboard.event) {
+      const eventTitle = document.querySelector('section.mb-8 h2.serif-display');
+      if (eventTitle) {
+        eventTitle.textContent = `${dashboard.event.name} — ${dashboard.event.event_date}`;
+      }
+    }
+
+    // Update stats
+    if (dashboard.stats) {
+      const s = dashboard.stats;
+      const kpiCards = document.querySelectorAll('section.mb-10 .flex-shrink-0');
+      if (kpiCards[0]) kpiCards[0].querySelector('.serif-display').textContent = s.appointments;
+      if (kpiCards[1]) kpiCards[1].querySelector('.serif-display').textContent = s.checked_in;
+      if (kpiCards[2]) kpiCards[2].querySelector('.serif-display').textContent = s.walk_ins;
+      if (kpiCards[3]) kpiCards[3].querySelector('.serif-display').textContent = s.quotes;
+      if (kpiCards[4]) kpiCards[4].querySelector('.serif-display').textContent = `$${Number(s.revenue).toLocaleString()}`;
+      if (s.deposits !== undefined && kpiCards[5]) {
+        kpiCards[5].querySelector('.serif-display').textContent = `$${Number(s.deposits).toLocaleString()}`;
+      }
+    }
+
+    // Update appointment cards
+    if (appointments && appointments.length > 0) {
+      const container = document.querySelector('section.mb-12 .space-y-4');
+      if (container) {
+        container.innerHTML = appointments.map(appt => {
+          const time = new Date(appt.appointment_time);
+          let hours = time.getHours();
+          const minutes = String(time.getMinutes()).padStart(2, '0');
+          const ampm = hours >= 12 ? 'PM' : 'AM';
+          hours = hours % 12 || 12;
+          const timeStr = `${hours}:${minutes}`;
+          const name = `${appt.first_name} ${appt.last_name}`;
+          const product = appt.product_interest || '';
+          const source = appt.cascade_source || '';
+          return `<a href="appointment.html?id=${appt.id}" style="text-decoration:none;color:inherit" class="bg-surface-container-lowest p-5 rounded-xl flex items-start gap-4 shadow-[0_12px_32px_rgba(1,15,33,0.04)] relative overflow-hidden block">
+  <div class="bg-primary-container/10 px-3 py-2 rounded-lg flex flex-col items-center justify-center min-w-[60px]">
+    <p class="technical-data text-primary font-bold text-sm">${timeStr}</p>
+    <p class="technical-data text-primary/70 text-[10px] uppercase">${ampm}</p>
+  </div>
+  <div class="flex-1">
+    <h4 class="font-bold text-[#010f21] text-lg mb-1">${name}</h4>
+    <div class="flex items-center gap-2 mb-2">
+      <span class="material-symbols-outlined text-outline text-sm" data-icon="pool">pool</span>
+      <p class="text-on-surface-variant text-sm">${product}</p>
+    </div>
+    <span class="inline-block bg-surface-container-high text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">${source}</span>
+  </div>
+  <button class="self-center">
+    <span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+  </button>
+</a>`;
+        }).join('\n');
+      }
+    }
+  } catch (err) {
+    console.error('Failed to load dashboard data:', err);
+  }
+});
+</script>
+</body></html>

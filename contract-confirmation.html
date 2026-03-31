@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;800&family=Figtree:wght@400;500;600;700&family=Roboto:wght@400;500&family=Newsreader:opsz,wght@6..72,400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+        font-family: 'Figtree', sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    .serif-display {
+        font-family: 'Frank Ruhl Libre', serif;
+    }
+    .technical-data {
+        font-family: 'Roboto', sans-serif;
+    }
+    .toast-enter {
+        animation: toastIn 0.3s ease-out forwards;
+    }
+    .toast-exit {
+        animation: toastOut 0.3s ease-in forwards;
+    }
+    @keyframes toastIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes toastOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes checkPop {
+        0% { transform: scale(0); opacity: 0; }
+        60% { transform: scale(1.15); }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    .check-pop {
+        animation: checkPop 0.5s ease-out 0.2s forwards;
+        opacity: 0;
+    }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "on-tertiary-fixed-variant": "#39485c",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-fixed-variant": "#004f54",
+                    "surface": "#f8f9fa",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "primary-container": "#008189",
+                    "outline-variant": "#bcc9ca",
+                    "on-primary-fixed": "#002022",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#134d5b",
+                    "primary": "#00666c",
+                    "tertiary-fixed": "#d4e3fd",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-background": "#191c1d",
+                    "tertiary-container": "#67758c",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "secondary-container": "#b6ebfc",
+                    "surface-dim": "#d9dadb",
+                    "on-secondary-fixed": "#001f27",
+                    "surface-container": "#edeeef",
+                    "on-tertiary-fixed": "#0d1c2f",
+                    "inverse-primary": "#69d6df",
+                    "outline": "#6d797a",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#376b7a",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#69d6df",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-container": "#fdfcff",
+                    "tertiary": "#4e5d72",
+                    "surface-variant": "#e1e3e4",
+                    "primary-fixed": "#87f3fb",
+                    "background": "#f8f9fa",
+                    "secondary": "#306574",
+                    "on-surface": "#191c1d",
+                    "surface-tint": "#00696f",
+                    "tertiary-fixed-dim": "#b8c7e0",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#f4feff",
+                    "surface-container-low": "#f3f4f5",
+                    "secondary-fixed": "#b6ebfc",
+                    "secondary-fixed-dim": "#9bcfdf",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#3d494a"
+                },
+                fontFamily: {
+                    "headline": ["Newsreader"],
+                    "body": ["Manrope"],
+                    "label": ["Inter"]
+                },
+                borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+        },
+    }
+</script>
+<style>
+    body {
+        min-height: max(884px, 100dvh);
+    }
+</style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-40">
+
+<!-- Toast container -->
+<div id="toast-container" class="fixed top-20 left-0 w-full z-[60] flex justify-center px-6 pointer-events-none"></div>
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#010f21] dark:bg-[#010f21] shadow-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00929C] transition-all duration-200 active:scale-95" data-icon="sync">sync</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-white/70 text-xs font-medium tracking-widest uppercase">Online</span>
+</div>
+</div>
+<h1 class="font-['Frank_Ruhl_Libre'] font-bold tracking-tight text-xl text-white">Atlas Spas</h1>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" data-icon="person">person</span>
+</div>
+</header>
+<div class="bg-[#306574] h-[2px] w-full fixed top-16 z-50"></div>
+
+<main class="pt-24 px-6">
+
+<!-- Success Hero -->
+<section class="flex flex-col items-center text-center mb-8 pt-6">
+<div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center mb-5 check-pop">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check</span>
+</div>
+<h2 class="serif-display text-3xl text-[#010f21] mb-2" id="hero-title">Sale Complete</h2>
+<p class="technical-data text-sm text-slate-400 tracking-wider" id="hero-contract">Contract #AS-2026-0847</p>
+</section>
+
+<!-- Summary Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)] p-5 mb-8">
+<div class="space-y-4">
+<!-- Customer -->
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm">Customer</span>
+<span class="font-bold text-[#010f21] text-sm" id="summary-customer">Sarah Jenkins</span>
+</div>
+<!-- Product -->
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm">Product</span>
+<span class="technical-data text-sm text-on-surface" id="summary-product">Signature L-800 Spa</span>
+</div>
+<!-- Total -->
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm">Total</span>
+<span class="technical-data font-bold text-[#010f21] text-sm" id="summary-total">$14,423.23</span>
+</div>
+<!-- Deposit -->
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm">Deposit</span>
+<div class="flex items-center gap-2">
+<span class="technical-data text-sm text-on-surface" id="summary-deposit">$4,326.97</span>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-primary bg-primary-fixed/30 px-2 py-0.5 rounded-full">Credit Card</span>
+</div>
+</div>
+<!-- Balance Due -->
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm">Balance Due</span>
+<span class="technical-data text-sm text-on-surface" id="summary-balance">$10,096.26</span>
+</div>
+</div>
+
+<!-- Divider via tonal shift -->
+<div class="bg-surface-container-low -mx-5 px-5 py-4 mt-4 rounded-b-xl space-y-4">
+<!-- QBO Sync -->
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm">QBO Sync</span>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">Pending</span>
+</div>
+<!-- Cascade -->
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm">Cascade</span>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Updated</span>
+</div>
+</div>
+</section>
+
+<!-- Action Buttons -->
+<section class="space-y-3 mb-8">
+<button onclick="showToast('Contract emailed to sarah.jenkins@email.com')" class="w-full bg-primary-container text-white py-4 px-6 rounded-xl font-bold text-sm shadow-xl flex items-center justify-center gap-2 active:scale-95 transition-all min-h-[56px]">
+<span class="material-symbols-outlined text-lg">mail</span>
+Email Contract to Customer
+</button>
+<button onclick="showToast('PDF generation... (demo mode)')" class="w-full bg-transparent text-primary py-4 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 active:scale-95 transition-all min-h-[56px] ring-2 ring-primary/30">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+View Contract PDF
+</button>
+<a href="dashboard.html" class="block text-center text-primary text-sm font-semibold py-3 active:opacity-70 transition-opacity min-h-[44px] flex items-center justify-center">
+Back to Dashboard
+</a>
+</section>
+
+<!-- Next Steps -->
+<section class="bg-surface-container-low rounded-xl p-5 mb-8">
+<h4 class="font-['Figtree'] font-semibold text-[#010f21] text-sm mb-4">Next Steps</h4>
+<div class="space-y-3">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;">check_circle</span>
+<span class="text-on-surface-variant text-sm">Sales Order created in QuickBooks</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;">check_circle</span>
+<span class="text-on-surface-variant text-sm">Deposit Invoice generated</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;">check_circle</span>
+<span class="text-on-surface-variant text-sm">Customer added to post-sale Cascade sequence</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;">check_circle</span>
+<span class="text-on-surface-variant text-sm">Delivery entry queued for scheduling</span>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-[#010f21] dark:bg-[#010f21] border-t border-[#306574]/30 shadow-[0_-4px_20px_rgba(1,15,33,0.3)]">
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="catalog.html">
+<span class="material-symbols-outlined" data-icon="pool">pool</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="pipeline.html">
+<span class="material-symbols-outlined" data-icon="view_kanban">view_kanban</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Pipeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">More</span>
+</a>
+</nav>
+
+<script>
+// Load session data or use defaults, then overlay URL params
+document.addEventListener('DOMContentLoaded', function() {
+    const fmt = n => '$' + Number(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlOrderId = urlParams.get('order_id');
+    const urlContractNumber = urlParams.get('contract_number');
+
+    // Load from sessionStorage first (existing behavior)
+    let raw = null;
+    try { raw = JSON.parse(sessionStorage.getItem('orderData')); } catch(e) {}
+
+    const data = {
+        customer: (raw && raw.customer) || 'Sarah Jenkins',
+        product: (raw && raw.product) || 'Signature L-800 Spa',
+        total: raw ? fmt(raw.total) : '$14,423.23',
+        deposit: raw ? fmt(raw.deposit) : '$4,326.97',
+        balance: raw ? fmt(raw.balance) : '$10,096.26',
+        contract: urlContractNumber ? '#' + urlContractNumber : ((raw && raw.contract_number) ? '#' + raw.contract_number : '#AS-2026-0847'),
+        email: (raw && raw.customer_email) || 'sarah.jenkins@email.com'
+    };
+
+    document.getElementById('summary-customer').textContent = data.customer;
+    document.getElementById('summary-product').textContent = data.product;
+    document.getElementById('summary-total').textContent = data.total;
+    document.getElementById('summary-deposit').textContent = data.deposit;
+    document.getElementById('summary-balance').textContent = data.balance;
+    document.getElementById('hero-contract').textContent = 'Contract ' + data.contract;
+
+    // Update email button toast with correct email
+    const emailBtn = document.querySelector('button[onclick*="emailed"]');
+    if (emailBtn) {
+        emailBtn.setAttribute('onclick', "showToast('Contract emailed to " + data.email + "')");
+    }
+});
+
+function showToast(message) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'bg-[#010f21] text-white px-5 py-3 rounded-xl shadow-xl text-sm font-medium toast-enter max-w-sm text-center';
+    toast.textContent = message;
+    container.appendChild(toast);
+
+    setTimeout(function() {
+        toast.classList.remove('toast-enter');
+        toast.classList.add('toast-exit');
+        setTimeout(function() {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+</script>
+
+</body></html>

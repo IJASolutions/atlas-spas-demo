@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&amp;family=Figtree:wght@300;400;500;600;700&amp;family=Roboto:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#39485c",
+              "surface-container-high": "#e7e8e9",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary-fixed-variant": "#004f54",
+              "surface": "#f8f9fa",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "primary-container": "#008189",
+              "outline-variant": "#bcc9ca",
+              "on-primary-fixed": "#002022",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#134d5b",
+              "primary": "#00666c",
+              "tertiary-fixed": "#d4e3fd",
+              "inverse-on-surface": "#f0f1f2",
+              "on-background": "#191c1d",
+              "tertiary-container": "#67758c",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "secondary-container": "#b6ebfc",
+              "surface-dim": "#d9dadb",
+              "on-secondary-fixed": "#001f27",
+              "surface-container": "#edeeef",
+              "on-tertiary-fixed": "#0d1c2f",
+              "inverse-primary": "#69d6df",
+              "outline": "#6d797a",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#376b7a",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#69d6df",
+              "inverse-surface": "#2e3132",
+              "on-tertiary-container": "#fdfcff",
+              "tertiary": "#4e5d72",
+              "surface-variant": "#e1e3e4",
+              "primary-fixed": "#87f3fb",
+              "background": "#f8f9fa",
+              "secondary": "#306574",
+              "on-surface": "#191c1d",
+              "surface-tint": "#00696f",
+              "tertiary-fixed-dim": "#b8c7e0",
+              "on-tertiary": "#ffffff",
+              "on-primary-container": "#f4feff",
+              "surface-container-low": "#f3f4f5",
+              "secondary-fixed": "#b6ebfc",
+              "secondary-fixed-dim": "#9bcfdf",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#3d494a"
+            },
+            fontFamily: {
+              "headline": ["Frank Ruhl Libre", "serif"],
+              "body": ["Figtree", "sans-serif"],
+              "label": ["Inter", "sans-serif"],
+              "data": ["Roboto", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .editorial-shadow {
+        box-shadow: 0 12px 32px rgba(1, 15, 33, 0.06);
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#010f21] dark:bg-[#010f21] shadow-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00929C]" data-icon="sync">sync</span>
+<h1 class="text-xl font-bold text-white font-['Frank_Ruhl_Libre'] tracking-tight">Atlas Spas</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-white/70 hover:bg-white/10 p-2 rounded-full transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-white/70 hover:bg-white/10 p-2 rounded-full transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+<div class="bg-[#306574] h-[2px] w-full absolute bottom-0 left-0"></div>
+</header>
+<main class="pt-20 pb-28 px-4 max-w-5xl mx-auto">
+<!-- Search and Filter Section -->
+<section class="mb-8 mt-4">
+<div class="relative mb-6">
+<input class="w-full bg-surface-container-low border-none border-b-2 border-outline-variant focus:border-primary focus:ring-0 py-4 pl-12 pr-4 text-on-surface placeholder:text-medium-gray font-body transition-all duration-300" placeholder="Search Master Spas..." type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+</div>
+<!-- Category Chips (Horizontal Scroll) -->
+<div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar" id="category-chips">
+<button class="whitespace-nowrap px-6 py-2 bg-primary-container text-white rounded-full font-medium text-sm transition-all shadow-sm active:scale-95" data-category="all" onclick="filterCategory('all', this)">All Products</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-sm hover:bg-surface-container-high transition-all active:scale-95" data-category="hot_tub" onclick="filterCategory('hot_tub', this)">Hot Tub</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-sm hover:bg-surface-container-high transition-all active:scale-95" data-category="swim_spa" onclick="filterCategory('swim_spa', this)">Swim Spa</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-sm hover:bg-surface-container-high transition-all active:scale-95" data-category="cold_plunge" onclick="filterCategory('cold_plunge', this)">Cold Plunge</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-sm hover:bg-surface-container-high transition-all active:scale-95" data-category="sauna" onclick="filterCategory('sauna', this)">Sauna</button>
+</div>
+</section>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 gap-10" id="product-grid">
+<!-- Products loaded dynamically from API -->
+</div>
+
+<script>
+const API_BASE = 'http://localhost:8080';
+let allProducts = [];
+let activeCategory = 'all';
+
+function formatCategoryLabel(cat) {
+    return cat.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) + ' Series';
+}
+
+function renderFeaturedCard(p) {
+    const specs = p.specs_json ? (typeof p.specs_json === 'string' ? JSON.parse(p.specs_json) : p.specs_json) : {};
+    const dims = specs.dimensions || '';
+    const seats = specs.seats || '';
+    return `
+<article class="relative group" data-category="${p.category}">
+<div class="aspect-[16/10] overflow-hidden rounded-xl editorial-shadow">
+<img alt="${p.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${p.image_url || ''}"/>
+</div>
+<div class="glass-card absolute -bottom-6 right-4 left-4 md:left-auto md:w-2/3 p-6 rounded-lg editorial-shadow">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold tracking-widest text-primary uppercase font-body">${formatCategoryLabel(p.category)}</span>
+<span class="text-sm font-data font-medium text-on-surface-variant">Starting at $${Number(p.msrp).toLocaleString()}</span>
+</div>
+<h2 class="text-2xl font-headline text-on-surface mb-4 leading-tight">${p.name}</h2>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+${dims ? `<div class="flex items-center gap-1 text-xs font-data text-outline"><span class="material-symbols-outlined text-[16px]" data-icon="straighten">straighten</span> ${dims}</div>` : ''}
+${seats ? `<div class="flex items-center gap-1 text-xs font-data text-outline"><span class="material-symbols-outlined text-[16px]" data-icon="group">group</span> ${seats}</div>` : ''}
+</div>
+<a href="quote-builder.html?product_id=${p.id}" class="bg-primary-container text-white px-5 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all hover:bg-primary hover:-translate-y-1 active:scale-95" style="text-decoration:none">
+Add to Quote
+<span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
+</a>
+</div>
+</div>
+</article>`;
+}
+
+function renderGridCard(p) {
+    return `
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow transition-all hover:-translate-y-1" data-category="${p.category}">
+<div class="aspect-video relative overflow-hidden">
+<img alt="${p.name}" class="w-full h-full object-cover" src="${p.image_url || ''}"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase text-secondary">${formatCategoryLabel(p.category)}</div>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="text-xl font-headline text-on-surface mb-1">${p.name}</h3>
+<p class="text-xs text-outline mb-4 font-body">${p.category.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</p>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant/15 pt-4">
+<span class="font-data text-sm font-semibold text-on-surface">$${Number(p.msrp).toLocaleString()}+</span>
+<a href="quote-builder.html?product_id=${p.id}" class="text-primary font-bold text-sm flex items-center gap-1 hover:underline transition-all" style="text-decoration:none">
+Add to Quote
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>`;
+}
+
+function renderProducts(products) {
+    const grid = document.getElementById('product-grid');
+    if (!products.length) {
+        grid.innerHTML = '<p class="text-center text-outline py-8">No products found.</p>';
+        return;
+    }
+    const featured = products[0];
+    const rest = products.slice(1);
+    let html = renderFeaturedCard(featured);
+    if (rest.length) {
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">`;
+        rest.forEach(p => { html += renderGridCard(p); });
+        html += `</div>`;
+    }
+    grid.innerHTML = html;
+}
+
+function filterCategory(category, btn) {
+    activeCategory = category;
+    // Update chip styles
+    document.querySelectorAll('#category-chips button').forEach(b => {
+        if (b === btn) {
+            b.className = 'whitespace-nowrap px-6 py-2 bg-primary-container text-white rounded-full font-medium text-sm transition-all shadow-sm active:scale-95';
+        } else {
+            b.className = 'whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-medium text-sm hover:bg-surface-container-high transition-all active:scale-95';
+        }
+    });
+    const filtered = category === 'all' ? allProducts : allProducts.filter(p => p.category === category);
+    renderProducts(filtered);
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const res = await fetch(API_BASE + '/api/products');
+        if (!res.ok) throw new Error('Failed to fetch products');
+        allProducts = await res.json();
+        allProducts.sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
+        renderProducts(allProducts);
+    } catch (err) {
+        console.error('Error loading products:', err);
+        document.getElementById('product-grid').innerHTML = '<p class="text-center text-error py-8">Failed to load products. Please try again.</p>';
+    }
+});
+</script>
+<!-- Catalog Quote Banner -->
+<section class="mt-16 p-8 bg-[#010f21] rounded-2xl relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-white font-headline text-2xl mb-2">Build Your Dream Backyard</h4>
+<p class="text-white/60 text-sm mb-6 max-w-xs">Our experts are ready to help you choose the perfect model for your space.</p>
+<button class="bg-[#00929C] text-white px-8 py-3 rounded-lg font-bold transition-all hover:bg-opacity-90 active:scale-95">
+                    Request Custom Quote
+                </button>
+</div>
+<!-- Decorative abstract element -->
+<div class="absolute top-0 right-0 w-48 h-48 bg-[#00929C] opacity-10 rounded-full blur-3xl -mr-12 -mt-12"></div>
+<div class="absolute bottom-0 left-0 w-32 h-32 bg-[#306574] opacity-20 rounded-full blur-2xl -ml-8 -mb-8"></div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-[#010f21] dark:bg-[#010f21] border-t border-[#306574]/30 shadow-[0_-4px_20px_rgba(1,15,33,0.3)]">
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#00929C]/10 text-[#00929C] rounded-xl px-3 py-1 active:scale-90 transition-transform duration-150" href="catalog.html">
+<span class="material-symbols-outlined" data-icon="pool" style="font-variation-settings: 'FILL' 1;">pool</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="pipeline.html">
+<span class="material-symbols-outlined" data-icon="view_kanban">view_kanban</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">Pipeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-white transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-['Figtree'] text-[11px] font-medium uppercase tracking-wider">More</span>
+</a>
+</nav>
+</body></html>
