@@ -177,52 +177,56 @@ export async function seedDb() {
   const IMG_CP = "https://lh3.googleusercontent.com/aida-public/AB6AXuB4ySEZ67G3z1GYKZi8i9Mj3DxVtquGkOCaRdx2KEVLNXd_gnKz9Sm4s0WtX6Xg78WyvP5ecfMzTZzTEAJTws00EZRjxEovmJIvKzrfRdPhFGTC2WX3uoMtu-T8BBzuXyusa1VMQMtGbjngvR133ufdevKfPeA4JWwFgYnuIgKrV0U4KgIMT1EYkv6HMxuf_IT8juy_WYyJHF7O2i8eCGIRh_DqSIF5B7Am_znsfltUdc1KnTDKmqYY1cz0vSlz51d90QAjWoY2M7Wx";
 
   const products = [
-    // ── Twilight Series (Premium Hot Tubs) ──────────────────
-    ["Twilight Series TS 8.25", "hot_tub", 16995, 14495, IMG_HT, JSON.stringify({series:"Twilight",seats:6,dimensions:"91 x 91 x 38 in",jets:57,weight:"875 lbs",gallons:425,electrical:"240V/50A"}), 1],
-    ["Twilight Series TS 8.2", "hot_tub", 15495, 12995, IMG_HT, JSON.stringify({series:"Twilight",seats:6,dimensions:"91 x 91 x 38 in",jets:48,weight:"840 lbs",gallons:400,electrical:"240V/50A"}), 2],
-    ["Twilight Series TS 7.25", "hot_tub", 13995, 11495, IMG_HT, JSON.stringify({series:"Twilight",seats:5,dimensions:"84 x 84 x 36 in",jets:45,weight:"750 lbs",gallons:350,electrical:"240V/40A"}), 3],
-    ["Twilight Series TS 7.2", "hot_tub", 12495, 10495, IMG_HT, JSON.stringify({series:"Twilight",seats:5,dimensions:"84 x 84 x 36 in",jets:38,weight:"720 lbs",gallons:325,electrical:"240V/40A"}), 4],
-    ["Twilight Series TS 6.2", "hot_tub", 10995, 8995, IMG_HT, JSON.stringify({series:"Twilight",seats:4,dimensions:"78 x 78 x 34 in",jets:30,weight:"650 lbs",gallons:275,electrical:"240V/40A"}), 5],
-    ["Twilight Series TS 240X", "hot_tub", 14495, 11995, IMG_HT, JSON.stringify({series:"Twilight",seats:5,dimensions:"84 x 84 x 36 in",jets:40,weight:"760 lbs",gallons:340,electrical:"240V/50A"}), 6],
+    // ── Twilight Series (Premium Hot Tubs) ── real specs from masterspas.com
+    ["Twilight Series TS 8.25", "hot_tub", 16995, 14495, IMG_HT, JSON.stringify({series:"Twilight",seats:7,dimensions:"94 x 94 x 38 in",jets:43,dry_weight:"1,100 lbs",full_weight:"5,690 lbs",gallons:395,electrical:"240V/50A",features:"Orion Light System, Master Force Bio-Magnetic Therapy, Master Blaster Foot Massage, Bluetooth stereo w/ subwoofer"}), 1],
+    ["Twilight Series TS 8.2", "hot_tub", 15495, 12995, IMG_HT, JSON.stringify({series:"Twilight",seats:6,dimensions:"94 x 94 x 38 in",jets:46,dry_weight:"1,065 lbs",full_weight:"5,345 lbs",gallons:380,electrical:"240V/50A",features:"Orion Light System, Master Blaster Foot Massage, Bluetooth stereo"}), 2],
+    ["Twilight Series TS 7.25", "hot_tub", 13995, 11495, IMG_HT, JSON.stringify({series:"Twilight",seats:7,dimensions:"84 x 84 x 38 in",jets:37,dry_weight:"919 lbs",full_weight:"4,760 lbs",gallons:305,electrical:"240V/40A",features:"Master Force Bio-Magnetic Therapy, full-foam insulation"}), 3],
+    ["Twilight Series TS 7.2", "hot_tub", 12495, 10495, IMG_HT, JSON.stringify({series:"Twilight",seats:6,dimensions:"84 x 84 x 38 in",jets:38,dry_weight:"980 lbs",full_weight:"4,635 lbs",gallons:305,electrical:"240V/40A",features:"Bluetooth stereo w/ 4 speakers + subwoofer"}), 4],
+    ["Twilight Series TS 67.25", "hot_tub", 11495, 9495, IMG_HT, JSON.stringify({series:"Twilight",seats:5,dimensions:"70 x 84 x 34 in",jets:28,dry_weight:"809 lbs",full_weight:"3,740 lbs",gallons:240,electrical:"240V/30A",features:"Compact footprint, full Twilight features"}), 5],
+    ["Twilight Series TS 6.2", "hot_tub", 10995, 8995, IMG_HT, JSON.stringify({series:"Twilight",seats:5,dimensions:"78 x 78 x 34 in",jets:30,dry_weight:"755 lbs",full_weight:"3,770 lbs",gallons:250,electrical:"240V/30A",features:"Energy-efficient, full-foam insulation"}), 6],
+    ["Twilight Series TS 240X", "hot_tub", 9495, 7495, IMG_HT, JSON.stringify({series:"Twilight",seats:3,dimensions:"78 x 78 x 34 in",jets:26,dry_weight:"715 lbs",full_weight:"2,980 lbs",gallons:205,electrical:"240V/30A",features:"Therapy-focused, deep contoured seats"}), 7],
 
-    // ── Michael Phelps Legend Series (Premium Hot Tubs) ──────
-    ["Legend LSX 900", "hot_tub", 18995, 15995, IMG_HT, JSON.stringify({series:"Legend",seats:7,dimensions:"94 x 94 x 40 in",jets:65,weight:"950 lbs",gallons:475,electrical:"240V/50A"}), 7],
-    ["Legend LSX 850", "hot_tub", 17495, 14495, IMG_HT, JSON.stringify({series:"Legend",seats:6,dimensions:"91 x 91 x 38 in",jets:55,weight:"890 lbs",gallons:435,electrical:"240V/50A"}), 8],
-    ["Legend LSX 800", "hot_tub", 15995, 13495, IMG_HT, JSON.stringify({series:"Legend",seats:6,dimensions:"91 x 91 x 38 in",jets:48,weight:"850 lbs",gallons:410,electrical:"240V/50A"}), 9],
-    ["Legend LSX 700", "hot_tub", 14495, 11995, IMG_HT, JSON.stringify({series:"Legend",seats:5,dimensions:"84 x 84 x 36 in",jets:42,weight:"750 lbs",gallons:350,electrical:"240V/40A"}), 10],
+    // ── Michael Phelps Legend Series (Luxury Hot Tubs) ── real specs
+    ["Legend LSX 900", "hot_tub", 21995, 18495, IMG_HT, JSON.stringify({series:"Legend",seats:8,dimensions:"108 x 94 x 38 in",jets:72,dry_weight:"1,485 lbs",full_weight:"7,055 lbs",gallons:490,electrical:"240V/50A",features:"StressRelief Neck & Shoulder seats, Master Blaster foot therapy, Icynene insulation, Wi-Fi capable"}), 8],
+    ["Legend LSX 850", "hot_tub", 19995, 16995, IMG_HT, JSON.stringify({series:"Legend",seats:7,dimensions:"94 x 94 x 38 in",jets:59,dry_weight:"1,170 lbs",full_weight:"5,760 lbs",gallons:395,electrical:"240V/50A",features:"StressRelief seats, premium LED, Wi-Fi capable"}), 9],
+    ["Legend LSX 800", "hot_tub", 18495, 15495, IMG_HT, JSON.stringify({series:"Legend",seats:6,dimensions:"94 x 94 x 38 in",jets:70,dry_weight:"1,330 lbs",full_weight:"5,860 lbs",gallons:410,electrical:"240V/50A",features:"Most jets in class, advanced water circulation"}), 10],
+    ["Legend LSX 700", "hot_tub", 15995, 13495, IMG_HT, JSON.stringify({series:"Legend",seats:5,dimensions:"84 x 84 x 38 in",jets:62,dry_weight:"1,095 lbs",full_weight:"4,565 lbs",gallons:305,electrical:"240V/40A",features:"Premium therapy, compact Legend footprint"}), 11],
+    ["Legend LSX 30", "hot_tub", 16995, 14295, IMG_HT, JSON.stringify({series:"Legend",seats:5,dimensions:"94 x 94 x 38 in",jets:63,dry_weight:"1,128 lbs",full_weight:"4,930 lbs",gallons:345,electrical:"240V/50A",features:"Lounge seat, open seating design"}), 12],
 
-    // ── Clarity Spas (Mid-Range Hot Tubs) ────────────────────
-    ["Clarity Spas Balance 9", "hot_tub", 10995, 8995, IMG_HT, JSON.stringify({series:"Clarity",seats:6,dimensions:"91 x 91 x 36 in",jets:35,weight:"780 lbs",gallons:375,electrical:"240V/40A"}), 11],
-    ["Clarity Spas Balance 8", "hot_tub", 9495, 7495, IMG_HT, JSON.stringify({series:"Clarity",seats:5,dimensions:"84 x 84 x 34 in",jets:30,weight:"680 lbs",gallons:310,electrical:"240V/40A"}), 12],
-    ["Clarity Spas Balance 7", "hot_tub", 7995, 6495, IMG_HT, JSON.stringify({series:"Clarity",seats:4,dimensions:"78 x 78 x 33 in",jets:25,weight:"600 lbs",gallons:260,electrical:"240V/30A"}), 13],
-    ["Clarity Spas Balance 6", "hot_tub", 6995, 5495, IMG_HT, JSON.stringify({series:"Clarity",seats:3,dimensions:"72 x 72 x 32 in",jets:20,weight:"520 lbs",gallons:220,electrical:"240V/30A"}), 14],
-    ["Clarity Spas Precision 8", "hot_tub", 9995, 7995, IMG_HT, JSON.stringify({series:"Clarity",seats:5,dimensions:"84 x 84 x 34 in",jets:32,weight:"700 lbs",gallons:325,electrical:"240V/40A"}), 15],
-    ["Clarity Spas Precision 7", "hot_tub", 8495, 6995, IMG_HT, JSON.stringify({series:"Clarity",seats:4,dimensions:"78 x 78 x 33 in",jets:28,weight:"620 lbs",gallons:275,electrical:"240V/30A"}), 16],
+    // ── Clarity Spas (Mid-Range) ── real specs
+    ["Clarity Spas Balance 9", "hot_tub", 13995, 11495, IMG_HT, JSON.stringify({series:"Clarity",seats:8,dimensions:"91 x 91 x 36 in",jets:45,electrical:"240V/40A",features:"Large capacity, open seating, waterfall, EcoPur Charge filtration"}), 13],
+    ["Clarity Spas Balance 8", "hot_tub", 11995, 9995, IMG_HT, JSON.stringify({series:"Clarity",seats:7,dimensions:"84 x 84 x 34 in",jets:40,electrical:"240V/40A",features:"Best-selling Clarity, ergonomic StressRelief seats, full-foam insulation"}), 14],
+    ["Clarity Spas Balance 7", "hot_tub", 9995, 7995, IMG_HT, JSON.stringify({series:"Clarity",seats:6,dimensions:"78 x 78 x 34 in",jets:35,electrical:"240V/30A",features:"StressRelief seats, EcoPur Charge filtration"}), 15],
+    ["Clarity Spas Balance 6 CS", "hot_tub", 8495, 6995, IMG_HT, JSON.stringify({series:"Clarity",seats:5,dimensions:"72 x 72 x 32 in",jets:30,electrical:"240V/30A or 120V plug-and-play",features:"Waterfall, cup holders, convertible electrical"}), 16],
+    ["Clarity Spas Precision 8", "hot_tub", 12495, 10495, IMG_HT, JSON.stringify({series:"Clarity",seats:7,dimensions:"84 x 84 x 34 in",jets:40,electrical:"240V/40A",features:"Open seating, large footwell, therapy-focused"}), 17],
+    ["Clarity Spas Precision 7", "hot_tub", 10495, 8495, IMG_HT, JSON.stringify({series:"Clarity",seats:6,dimensions:"78 x 78 x 34 in",jets:35,electrical:"240V/30A",features:"Open seating, StressRelief seats"}), 18],
 
-    // ── Getaway Spas (Entry-Level Hot Tubs) ──────────────────
-    ["Getaway Bar Harbor LE", "hot_tub", 5995, 4495, null, JSON.stringify({series:"Getaway",seats:4,dimensions:"75 x 75 x 33 in",jets:20,weight:"500 lbs",gallons:240,electrical:"240V/30A"}), 17],
-    ["Getaway Bar Harbor SE", "hot_tub", 4995, 3995, null, JSON.stringify({series:"Getaway",seats:4,dimensions:"75 x 75 x 33 in",jets:16,weight:"475 lbs",gallons:230,electrical:"120V/20A plug-and-play"}), 18],
-    ["Getaway Ocho Rios SE", "hot_tub", 5495, 4295, null, JSON.stringify({series:"Getaway",seats:5,dimensions:"78 x 78 x 33 in",jets:18,weight:"510 lbs",gallons:250,electrical:"120V/20A plug-and-play"}), 19],
-    ["Getaway San Miguel", "hot_tub", 4495, 3495, null, JSON.stringify({series:"Getaway",seats:3,dimensions:"69 x 69 x 29 in",jets:12,weight:"350 lbs",gallons:165,electrical:"120V/15A plug-and-play"}), 20],
+    // ── Getaway Spas (Entry-Level / Plug-and-Play) ── real specs
+    ["Getaway Bar Harbor LE", "hot_tub", 7995, 5995, null, JSON.stringify({series:"Getaway",seats:5,dimensions:"78 x 78 x 34 in",jets:40,electrical:"240V/30A",features:"Largest Getaway, full-size lounge, cascading waterfall, Colorscape LED"}), 19],
+    ["Getaway Bar Harbor SE", "hot_tub", 5995, 4495, null, JSON.stringify({series:"Getaway",seats:5,dimensions:"78 x 78 x 34 in",jets:25,electrical:"120V/20A plug-and-play",features:"Cascading waterfall, lightweight, portable"}), 20],
+    ["Getaway Ocho Rios CS", "hot_tub", 6495, 4995, null, JSON.stringify({series:"Getaway",seats:4,dimensions:"75 x 75 x 33 in",jets:29,electrical:"240V/30A or 120V plug-and-play",features:"Waterfall, backlit cup holders, convertible electrical"}), 21],
+    ["Getaway Ocho Rios SE", "hot_tub", 4995, 3995, null, JSON.stringify({series:"Getaway",seats:4,dimensions:"75 x 75 x 33 in",jets:17,electrical:"120V/20A plug-and-play",features:"Lightweight, portable, EcoPur Charge filtration"}), 22],
+    ["Getaway San Miguel", "hot_tub", 4495, 3495, null, JSON.stringify({series:"Getaway",seats:3,dimensions:"69 x 69 x 29 in",jets:17,electrical:"120V/15A plug-and-play",features:"Most compact Master Spas, perfect for small spaces"}), 23],
 
-    // ── Michael Phelps Swim Spas ─────────────────────────────
-    ["MP Signature Pro Swim Spa", "swim_spa", 54995, 47995, IMG_SS, JSON.stringify({series:"Michael Phelps",length:"19ft x 8ft",seats:4,swim_jets:"Wave XP Pro system",therapy_jets:38,gallons:2150,electrical:"240V/100A"}), 21],
+    // ── Michael Phelps Swim Spas ── real specs
+    ["MP Momentum Deep", "swim_spa", 49995, 43995, IMG_SS, JSON.stringify({series:"Michael Phelps",length:"231 x 94 x 60 in (19ft)",seats:4,jets:"45 swim + 36 therapy + 2 Master Blasters",dry_weight:"3,700 lbs",full_weight:"24,205 lbs",gallons:2325,electrical:"240V/100A",features:"Wave Propulsion system, dual temp zones, Mast3rPur Water Management, largest domestic swim spa"}), 24],
+    ["MP Force Deep", "swim_spa", 39995, 34995, IMG_SS, JSON.stringify({series:"Michael Phelps",length:"220 x 94 x 58 in (17ft)",jets:"Wave Propulsion system",dry_weight:"3,500 lbs",gallons:2000,electrical:"240V/80A",features:"Wave Propulsion, fitness-focused, dual temperature zones"}), 25],
 
-    // ── H2X Challenger Series (Performance Swim Spas) ────────
-    ["H2X Challenger 21 D", "swim_spa", 42995, 36995, IMG_SS, JSON.stringify({series:"H2X Challenger",length:"21ft x 8ft",seats:4,swim_jets:8,therapy_jets:32,gallons:2400,electrical:"240V/100A",dual_temp:true}), 22],
-    ["H2X Challenger 19 Deep MAX", "swim_spa", 38995, 33495, IMG_SS, JSON.stringify({series:"H2X Challenger",length:"19ft x 8ft",seats:4,swim_jets:8,therapy_jets:28,gallons:2200,electrical:"240V/80A",dual_temp:true}), 23],
-    ["H2X Challenger 15 D", "swim_spa", 29995, 25495, IMG_SS, JSON.stringify({series:"H2X Challenger",length:"15ft x 7ft 8in",seats:3,swim_jets:6,therapy_jets:24,gallons:1650,electrical:"240V/60A",dual_temp:true}), 24],
+    // ── H2X Challenger Series (Performance Swim Spas) ── real specs
+    ["H2X Challenger 19D MAX", "swim_spa", 39995, 34495, IMG_SS, JSON.stringify({series:"H2X Challenger",length:"231 x 94 x 60 in (19ft)",seats:4,jets:"47 total, 3 pumps",dry_weight:"3,335 lbs",full_weight:"24,230 lbs",gallons:2350,electrical:"240V/80A",features:"Largest swim area, Xtreme Therapy Cove, variable speed, VIP airless jets"}), 26],
+    ["H2X Challenger 15 D", "swim_spa", 29995, 25495, IMG_SS, JSON.stringify({series:"H2X Challenger",length:"180 x 94 x 51 in (15ft)",seats:3,jets:"Obstacle-free swim area",gallons:1500,electrical:"240V/60A",features:"Smallest Challenger footprint, strategic massage jets, dual temp"}), 27],
 
-    // ── H2X Trainer Series (Entry Swim Spas) ─────────────────
-    ["H2X Trainer 21 Deep", "swim_spa", 36995, 31495, IMG_SS, JSON.stringify({series:"H2X Trainer",length:"21ft x 8ft",seats:4,swim_jets:6,therapy_jets:28,gallons:2300,electrical:"240V/80A"}), 25],
-    ["H2X Trainer 19 Deep MAX", "swim_spa", 33995, 28995, IMG_SS, JSON.stringify({series:"H2X Trainer",length:"19ft x 8ft",seats:4,swim_jets:6,therapy_jets:24,gallons:2100,electrical:"240V/80A"}), 26],
-    ["H2X Trainer 15 Deep", "swim_spa", 25995, 21995, IMG_SS, JSON.stringify({series:"H2X Trainer",length:"15ft x 7ft 8in",seats:3,swim_jets:4,therapy_jets:20,gallons:1600,electrical:"240V/50A"}), 27],
-    ["H2X Trainer 15", "swim_spa", 22995, 19495, null, JSON.stringify({series:"H2X Trainer",length:"15ft x 7ft 8in",seats:3,swim_jets:4,therapy_jets:16,gallons:1500,electrical:"240V/50A"}), 28],
-    ["H2X Trainer 12", "swim_spa", 18995, 15995, null, JSON.stringify({series:"H2X Trainer",length:"12ft x 7ft 8in",seats:2,swim_jets:3,therapy_jets:12,gallons:1100,electrical:"240V/40A"}), 29],
+    // ── H2X Trainer Series (Entry Swim Spas) ── real specs
+    ["H2X Trainer 21", "swim_spa", 36995, 31495, IMG_SS, JSON.stringify({series:"H2X Trainer",length:"257 x 94 x 51 in (21ft)",seats:4,jets:"Swim + therapy zones",gallons:2400,electrical:"240V/80A",features:"Spacious swim area, dedicated hot tub section, sun lounge"}), 28],
+    ["H2X Trainer 19D MAX", "swim_spa", 33995, 28995, IMG_SS, JSON.stringify({series:"H2X Trainer",length:"231 x 94 x 60 in (19ft)",seats:4,jets:"31 therapy jets",gallons:2300,electrical:"240V/80A",features:"Full hydrotherapy, modern design, family-size"}), 29],
+    ["H2X Trainer 15D", "swim_spa", 25995, 21995, IMG_SS, JSON.stringify({series:"H2X Trainer",length:"180 x 94 x 51 in (15ft)",seats:3,jets:"4 VIP swim jets + air-injected therapy",gallons:1500,electrical:"240V/50A",features:"Endless swim current, H2Xercise Fitness System, compact"}), 30],
+    ["H2X Trainer 15", "swim_spa", 22995, 19495, null, JSON.stringify({series:"H2X Trainer",length:"180 x 94 x 48 in (15ft)",seats:3,jets:"4 swim jets",gallons:1400,electrical:"240V/50A",features:"Entry swim spa, phone control, temperature app"}), 31],
+    ["H2X Trainer 12", "swim_spa", 18995, 15995, null, JSON.stringify({series:"H2X Trainer",length:"145 x 94 x 48 in (12ft)",seats:2,jets:"3 swim jets",gallons:1100,electrical:"240V/40A",features:"Most compact swim spa, ideal for small backyards"}), 32],
 
-    // ── Chilly GOAT Cold Tubs ────────────────────────────────
-    ["Chilly GOAT Alpine Glacier", "cold_plunge", 9495, 6995, IMG_CP, JSON.stringify({series:"Chilly GOAT",temp:"40F min",dimensions:"76 x 42 x 30 in",recovery:"Full body immersion",cooling:"Built-in chiller",filtration:"Ozone + UV",electrical:"120V/15A"}), 30],
-    ["Chilly GOAT Valaris", "cold_plunge", 14995, 10995, IMG_CP, JSON.stringify({series:"Chilly GOAT",temp:"40F cold / 104F hot",dimensions:"94 x 56 x 32 in",recovery:"Hot + Cold dual zone",cooling:"Built-in chiller + heater",filtration:"Ozone + UV",electrical:"240V/40A"}), 31],
+    // ── Chilly GOAT Cold Tubs ── real specs + prices from chillygoattubs.com
+    ["Chilly GOAT Alpine Glacier", "cold_plunge", 9495, 6995, IMG_CP, JSON.stringify({series:"Chilly GOAT",temp:"40-104F",dimensions:"80 x 60 x 32 in",chiller:"2.1 hp integrated",filtration:"UV filtration (ozone-free)",electrical:"120V/15A",features:"Wi-Fi app control, minimal chemicals, contemporary cabinet, 2yr shell warranty"}), 33],
+    ["Chilly GOAT Matterhorn", "cold_plunge", 4995, 3995, IMG_CP, JSON.stringify({series:"Chilly GOAT",temp:"40-104F",dimensions:"73 x 44 x 30 in",chiller:"1.0 hp external",filtration:"Standard",electrical:"120V/15A",features:"Durable molded design, enhanced insulation, 1yr equipment warranty"}), 34],
+    ["Chilly GOAT Valaris", "cold_plunge", 14995, 10995, IMG_CP, JSON.stringify({series:"Chilly GOAT",temp:"40F cold / 104F hot",dimensions:"94 x 56 x 32 in",chiller:"Built-in chiller + heater",filtration:"UV + ozone",electrical:"240V/40A",features:"Hot + Cold dual zone combo, ultimate recovery station"}), 35],
   ];
   for (const p of products) {
     await run("INSERT INTO products (name, category, msrp, floor_price, image_url, specs_json, sort_order) VALUES ($1,$2,$3,$4,$5,$6,$7)", p);
