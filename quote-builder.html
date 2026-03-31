@@ -158,26 +158,43 @@ body {
 
 <main class="pt-[120px] px-5 pb-80">
 
-<!-- Selected Model Card -->
+<!-- Quote Line Items -->
 <section class="mb-6">
-<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)]">
-<div class="flex items-start justify-between mb-3">
+<div id="line-items-container">
+<!-- First product loaded from URL param -->
+</div>
+<!-- Add Product Button -->
+<button onclick="showProductPicker()" class="w-full mt-3 border-2 border-dashed border-outline-variant text-on-surface-variant rounded-xl min-h-[56px] flex items-center justify-center gap-2 active:scale-[0.98] transition-transform hover:border-primary hover:text-primary">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-sm font-semibold">Add Another Product</span>
+</button>
+<!-- Product Picker Modal -->
+<div id="product-picker" class="hidden fixed inset-0 z-[60] bg-black/40 flex items-end justify-center" onclick="if(event.target===this)hideProductPicker()">
+<div class="bg-surface w-full max-w-lg rounded-t-2xl max-h-[70vh] flex flex-col">
+<div class="flex items-center justify-between px-5 py-4 border-b border-outline-variant/30">
+<h3 class="serif-display text-lg text-[#010f21]">Select Product</h3>
+<button onclick="hideProductPicker()" class="min-w-[44px] min-h-[44px] flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<div class="px-5 py-3">
+<input type="text" id="product-search" placeholder="Search products..." oninput="filterProductPicker(this.value)" class="w-full bg-surface-container-low rounded-xl px-4 py-3 text-sm border-0 focus:ring-2 focus:ring-primary-container">
+</div>
+<div class="overflow-y-auto flex-1 px-5 pb-5" id="product-picker-list">
+</div>
+</div>
+</div>
+</section>
+
+<!-- Expo Discount Toggle (applies to all items) -->
+<section class="mb-6">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_4px_12px_rgba(1,15,33,0.02)] flex items-center justify-between">
 <div>
-<h2 class="serif-display text-2xl text-[#010f21] leading-tight" id="model-name">Loading...</h2>
-<span class="inline-block mt-2 bg-primary-container text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider" id="model-category"></span>
+<p class="text-on-surface text-sm font-medium">Expo Pricing</p>
+<p class="text-on-surface-variant text-xs">Apply floor price to all products</p>
 </div>
-</div>
-<div class="flex items-end justify-between mt-4">
-<div>
-<p class="text-outline text-[10px] font-bold uppercase tracking-tighter mb-1" id="price-label">MSRP</p>
-<p class="serif-display text-3xl text-[#010f21]" id="base-price-display">--</p>
-</div>
-<div class="flex items-center gap-3">
-<span class="text-on-surface-variant text-xs font-medium">Expo Discount</span>
 <div class="toggle-track" id="expo-toggle" onclick="toggleExpo()">
 <div class="toggle-thumb"></div>
-</div>
-</div>
 </div>
 </div>
 </section>
@@ -302,13 +319,103 @@ const customerName = urlParams.get('customer_name') || 'Sarah Jenkins';
 let expoDiscount = false;
 let taxExempt = false;
 let docFeeWaived = false;
-let MSRP = 0;
-let FLOOR_PRICE = 0;
 const TAX_RATE = 0.0825;
 let productData = null;
+let allProductsList = []; // for product picker
+let lineItems = []; // {id, product, msrp, floor_price, category}
 
 function getBasePrice() {
-    return expoDiscount ? FLOOR_PRICE : MSRP;
+    return lineItems.reduce((sum, item) => sum + (expoDiscount ? Number(item.floor_price) : Number(item.msrp)), 0);
+}
+
+function addLineItem(product) {
+    lineItems.push({
+        id: Date.now(),
+        product_id: product.id,
+        name: product.name,
+        msrp: Number(product.msrp),
+        floor_price: Number(product.floor_price),
+        category: product.category,
+        specs: product.specs_json ? (typeof product.specs_json === 'string' ? JSON.parse(product.specs_json) : product.specs_json) : {}
+    });
+    renderLineItems();
+    recalc();
+}
+
+function removeLineItem(itemId) {
+    lineItems = lineItems.filter(i => i.id !== itemId);
+    renderLineItems();
+    recalc();
+}
+
+function renderLineItems() {
+    const container = document.getElementById('line-items-container');
+    if (lineItems.length === 0) {
+        container.innerHTML = '<p class="text-center text-outline py-4">No products added. Tap "Add Another Product" below.</p>';
+        return;
+    }
+    container.innerHTML = lineItems.map((item, idx) => {
+        const price = expoDiscount ? item.floor_price : item.msrp;
+        const series = item.specs.series || '';
+        const catLabel = item.category.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        return `<div class="bg-surface-container-lowest p-4 rounded-xl shadow-[0_12px_32px_rgba(1,15,33,0.04)] ${idx > 0 ? 'mt-3' : ''}">
+<div class="flex items-start justify-between">
+<div class="flex-1">
+<h3 class="serif-display text-lg text-[#010f21] leading-tight">${item.name}</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-primary-container text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">${catLabel}</span>
+${series ? `<span class="text-outline text-[10px]">${series}</span>` : ''}
+</div>
+</div>
+${lineItems.length > 1 ? `<button onclick="removeLineItem(${item.id})" class="min-w-[44px] min-h-[44px] flex items-center justify-center -mr-2 -mt-1">
+<span class="material-symbols-outlined text-error text-xl">close</span>
+</button>` : `<button onclick="removeLineItem(${item.id})" class="min-w-[44px] min-h-[44px] flex items-center justify-center -mr-2 -mt-1">
+<span class="material-symbols-outlined text-outline text-xl">close</span>
+</button>`}
+</div>
+<div class="flex items-end justify-between mt-3">
+<div>
+<p class="text-outline text-[9px] font-bold uppercase tracking-tighter">${expoDiscount ? 'FLOOR' : 'MSRP'}</p>
+<p class="serif-display text-2xl text-[#010f21]">$${price.toLocaleString()}</p>
+</div>
+<div class="text-right">
+<p class="text-outline text-[9px]">${item.specs.seats ? item.specs.seats + ' seats' : ''} ${item.specs.jets ? '· ' + item.specs.jets + ' jets' : ''}</p>
+</div>
+</div>
+</div>`;
+    }).join('');
+}
+
+function showProductPicker() {
+    document.getElementById('product-picker').classList.remove('hidden');
+    document.getElementById('product-search').value = '';
+    renderProductPickerList(allProductsList);
+    document.getElementById('product-search').focus();
+}
+
+function hideProductPicker() {
+    document.getElementById('product-picker').classList.add('hidden');
+}
+
+function filterProductPicker(query) {
+    const q = query.toLowerCase();
+    const filtered = allProductsList.filter(p => p.name.toLowerCase().includes(q) || p.category.includes(q));
+    renderProductPickerList(filtered);
+}
+
+function renderProductPickerList(products) {
+    const container = document.getElementById('product-picker-list');
+    container.innerHTML = products.map(p => {
+        const price = expoDiscount ? Number(p.floor_price) : Number(p.msrp);
+        const catLabel = p.category.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        return `<button onclick="addLineItem(${JSON.stringify(p).replace(/"/g, '&quot;')}); hideProductPicker();" class="w-full text-left p-3 rounded-xl hover:bg-surface-container-low active:scale-[0.98] transition-all flex items-center justify-between min-h-[52px]">
+<div>
+<p class="text-on-surface text-sm font-medium">${p.name}</p>
+<p class="text-outline text-xs">${catLabel}</p>
+</div>
+<span class="technical-data text-on-surface font-semibold text-sm">$${price.toLocaleString()}</span>
+</button>`;
+    }).join('');
 }
 
 function getSelectedOptions() {
@@ -361,8 +468,7 @@ function toggleExpo() {
     expoDiscount = !expoDiscount;
     const toggle = document.getElementById('expo-toggle');
     toggle.classList.toggle('active', expoDiscount);
-    document.getElementById('price-label').textContent = expoDiscount ? 'FLOOR PRICE' : 'MSRP';
-    document.getElementById('base-price-display').textContent = expoDiscount ? fmtPrice(FLOOR_PRICE) : fmtPrice(MSRP);
+    renderLineItems();
     recalc();
 }
 
@@ -535,10 +641,11 @@ async function continueToContract() {
     }
 
     const quotePayload = {
-        product_id: parseInt(productId),
+        product_id: lineItems.length > 0 ? lineItems[0].product_id : parseInt(productId),
         customer_id: customerId ? parseInt(customerId) : null,
         customer_name: customerName,
-        model: productData ? productData.name : '',
+        model: lineItems.map(i => i.name).join(' + '),
+        line_items: lineItems.map(i => ({ product_id: i.product_id, name: i.name, msrp: i.msrp, floor_price: i.floor_price, category: i.category })),
         base_price: base,
         expo_discount: expoDiscount,
         options: selectedOptions,
@@ -572,32 +679,32 @@ async function continueToContract() {
 
 // Initialize from API
 document.addEventListener('DOMContentLoaded', async () => {
-    // Set customer strip
     document.getElementById('customer-strip').innerHTML = customerName + ' <span class="text-on-surface-variant mx-1">&middot;</span> Loading...';
 
     try {
-        // Fetch product data first
-        const productRes = await fetch(API_BASE + '/api/products/' + productId);
-        if (!productRes.ok) throw new Error('Failed to fetch product');
-        productData = await productRes.json();
-
-        MSRP = Number(productData.msrp);
-        FLOOR_PRICE = Number(productData.floor_price);
-
-        // Update model card
-        document.getElementById('model-name').textContent = productData.name;
-        const catLabel = productData.category.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-        document.getElementById('model-category').textContent = catLabel;
-        document.getElementById('base-price-display').textContent = fmtPrice(MSRP);
-        document.getElementById('customer-strip').innerHTML = customerName + ' <span class="text-on-surface-variant mx-1">&middot;</span> ' + productData.name;
-
-        // Fetch options, discounts, financing in parallel
-        const [optionsRes, discountsRes, financingRes] = await Promise.all([
-            fetch(API_BASE + '/api/options?category=' + productData.category),
+        // Fetch the selected product AND all products for the picker in parallel
+        const [productRes, allProductsRes, optionsRes, discountsRes, financingRes] = await Promise.all([
+            fetch(API_BASE + '/api/products/' + productId),
+            fetch(API_BASE + '/api/products'),
+            fetch(API_BASE + '/api/options'),
             fetch(API_BASE + '/api/discounts'),
             fetch(API_BASE + '/api/financing')
         ]);
 
+        // Load all products for the picker
+        if (allProductsRes.ok) {
+            allProductsList = await allProductsRes.json();
+            allProductsList.sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
+        }
+
+        // Add the first product as a line item
+        if (productRes.ok) {
+            productData = await productRes.json();
+            addLineItem(productData);
+            document.getElementById('customer-strip').innerHTML = customerName + ' <span class="text-on-surface-variant mx-1">&middot;</span> ' + productData.name;
+        }
+
+        // Render options (show all options since quote might have multiple categories)
         if (optionsRes.ok) {
             const options = await optionsRes.json();
             renderOptions(options);
@@ -616,7 +723,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         recalc();
     } catch (err) {
         console.error('Error loading quote builder data:', err);
-        document.getElementById('model-name').textContent = 'Error loading product';
     }
 });
 </script>
