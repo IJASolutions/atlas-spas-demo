@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const appointmentId = params.get('id');
 
-    const res = await fetch('http://localhost:8080/api/appointments');
+    const res = await fetch('/api/appointments');
     const appointments = await res.json();
 
     let appt = appointments[0];

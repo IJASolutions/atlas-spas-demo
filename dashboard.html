@@ -272,8 +272,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     const [dashRes, apptRes] = await Promise.all([
-      fetch('http://localhost:8080/api/dashboard'),
-      fetch('http://localhost:8080/api/appointments')
+      fetch('/api/dashboard'),
+      fetch('/api/appointments')
     ]);
     const dashboard = await dashRes.json();
     const appointments = await apptRes.json();
