@@ -280,7 +280,11 @@ const server = Bun.serve({
     let filePath = url.pathname === "/" ? "/index.html" : url.pathname;
     filePath = filePath.slice(1);
     const fullPath = join(STATIC_DIR, filePath);
-    if (existsSync(fullPath)) return new Response(Bun.file(fullPath));
+    if (existsSync(fullPath)) {
+      return new Response(Bun.file(fullPath), {
+        headers: { "Cache-Control": "no-cache, no-store, must-revalidate", "Pragma": "no-cache" }
+      });
+    }
     return new Response("Not Found", { status: 404 });
   },
 });
